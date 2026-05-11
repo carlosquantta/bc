@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Base Cometa Mérida — 29·30·31 Mayo</title>
+<link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --purple:   #8B6BB1;
+  --purple-lt:#C4A8E0;
+  --pink:     #F472A8;
+  --coral:    #F4645C;
+  --gold:     #C8973A;
+  --gold-lt:  #E8C97A;
+  --mint:     #7ECFB3;
+  --mint-lt:  #B8EAD8;
+  --cream:    #F5EDD4;
+  --dark:     #2A1A3E;
+  --white:    #FFFAF4;
+}
+html { scroll-behavior: smooth; }
+body { background: var(--cream); color: var(--dark); font-family: 'Nunito', sans-serif; overflow-x: hidden; }
+
+.blob { position: absolute; border-radius: 60% 40% 55% 45% / 45% 55% 40% 60%; opacity: 0.18; pointer-events: none; }
+
+/* HERO */
+.hero {
+  position: relative;
+  background: linear-gradient(160deg, #E8D8F8 0%, #F8C8DC 45%, #FCE4C0 100%);
+  min-height: 100vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 3rem 1.5rem 4rem; overflow: hidden;
+}
+.hero .b1 { width: 400px; height: 380px; background: var(--purple); top: -90px; left: -100px; }
+.hero .b2 { width: 280px; height: 260px; background: var(--coral);  bottom: -50px; right: -60px; }
+.hero .b3 { width: 180px; height: 180px; background: var(--mint);   top: 35%; left: 3%; }
+
+.badge-top {
+  position: relative; z-index: 2;
+  background: var(--dark); color: var(--gold-lt);
+  font-weight: 900; font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase;
+  padding: 0.35rem 1.1rem; border-radius: 100px;
+  margin-bottom: 1.5rem;
+  animation: popIn 0.6s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+
+.hero-logo {
+  position: relative; z-index: 2;
+  animation: popIn 0.7s 0.1s cubic-bezier(0.34,1.56,0.64,1) both;
+  margin-bottom: 0.25rem;
+}
+.hero-logo .w1, .hero-logo .w2 {
+  font-family: 'Lilita One', cursive;
+  font-size: clamp(5rem, 18vw, 10rem);
+  line-height: 0.88;
+  color: var(--gold-lt);
+  -webkit-text-stroke: 3px var(--dark);
+  text-shadow: 5px 5px 0 var(--dark);
+  display: block; letter-spacing: -0.02em;
+}
+.hero-logo .wm {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(0.9rem, 2.5vw, 1.4rem);
+  letter-spacing: 0.4em; color: var(--dark); opacity: 0.55;
+  text-transform: uppercase; display: block; margin-top: 0.3rem;
+}
+
+.mascot-wrap {
+  position: relative; z-index: 2;
+  width: clamp(110px, 20vw, 185px);
+  margin: 0.75rem auto;
+  animation: float 3.2s ease-in-out infinite;
+}
+@keyframes float { 0%,100%{transform:translateY(0) rotate(-2deg);} 50%{transform:translateY(-14px) rotate(2deg);} }
+
+.hero-badges {
+  position: relative; z-index: 2;
+  display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center;
+  margin-top: 1.75rem;
+  animation: popIn 0.7s 0.3s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+.hb {
+  background: white; border: 2.5px solid var(--dark);
+  border-radius: 100px; padding: 0.45rem 1.1rem;
+  font-weight: 800; font-size: 0.82rem;
+  box-shadow: 3px 3px 0 var(--dark); white-space: nowrap;
+}
+.hb.coral   { background: var(--coral);    color: white; }
+.hb.purple  { background: var(--purple);   color: white; }
+
+.cat-pills {
+  position: relative; z-index: 2;
+  display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;
+  margin-top: 2rem;
+  animation: popIn 0.7s 0.45s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+.cp {
+  font-family: 'Fredoka One', cursive; font-size: 1.05rem;
+  padding: 0.45rem 1.4rem; border-radius: 100px;
+  border: 2.5px solid var(--dark); box-shadow: 4px 4px 0 var(--dark);
+  cursor: default; transition: transform 0.15s, box-shadow 0.15s;
+}
+.cp:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--dark); }
+.cp.p { background: var(--purple-lt); }
+.cp.r { background: var(--coral); color: white; }
+.cp.g { background: var(--gold);  color: white; }
+
+/* WAVE */
+.wave { display: block; width: 100%; line-height: 0; }
+
+/* SECTIONS */
+.sw { position: relative; overflow: hidden; padding: 4.5rem 1.5rem; }
+.si { max-width: 820px; margin: 0 auto; }
+.sk { font-weight: 900; font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase; opacity: 0.45; margin-bottom: 0.4rem; }
+.st { font-family: 'Fredoka One', cursive; font-size: clamp(2.4rem, 6vw, 3.8rem); line-height: 1; margin-bottom: 1.75rem; }
+
+/* ABOUT */
+.sw-about { background: var(--purple); color: white; }
+.sw-about .bba { width: 280px; height: 280px; background: var(--pink); bottom: -90px; right: -50px; opacity: 0.22; }
+.ag { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center; }
+.ag .st { color: var(--gold-lt); }
+.ag p { font-size: 0.97rem; line-height: 1.75; opacity: 0.88; }
+.ag p+p { margin-top: 0.75rem; }
+.atags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.25rem; }
+.atag { background: rgba(255,255,255,0.14); border: 1.5px solid rgba(255,255,255,0.28); border-radius: 100px; padding: 0.28rem 0.85rem; font-size: 0.76rem; font-weight: 700; }
+.mascot-col { display: flex; justify-content: center; }
+
+/* AGENDA */
+.sw-agenda { background: var(--mint-lt); }
+.day-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+.dtab {
+  font-family: 'Fredoka One', cursive; font-size: 1rem;
+  padding: 0.45rem 1.2rem; border-radius: 100px;
+  border: 2.5px solid var(--dark); box-shadow: 3px 3px 0 var(--dark);
+  cursor: pointer; background: white; color: var(--dark);
+  transition: background 0.18s, color 0.18s, transform 0.12s;
+}
+.dtab.active { background: var(--dark); color: var(--gold-lt); }
+.dtab:hover:not(.active) { transform: translate(-1px,-1px); box-shadow: 4px 4px 0 var(--dark); }
+
+.dpanel { display: none; }
+.dpanel.active { display: block; }
+.acc-list { display: flex; flex-direction: column; gap: 0.5rem; }
+
+.ai { background: white; border: 2px solid var(--dark); border-radius: 12px; box-shadow: 3px 3px 0 var(--dark); overflow: hidden; }
+.atrig {
+  width: 100%; background: none; border: none; cursor: pointer;
+  padding: 0.9rem 1.1rem;
+  display: grid; grid-template-columns: 52px 1fr auto 28px;
+  align-items: center; gap: 0.85rem; text-align: left;
+  transition: background 0.15s;
+}
+.atrig:hover { background: rgba(0,0,0,0.025); }
+.tbadge {
+  font-family: 'Fredoka One', cursive; font-size: 0.82rem;
+  background: var(--gold); color: white;
+  border-radius: 8px; padding: 0.22rem 0.35rem;
+  text-align: center; border: 1.5px solid var(--dark); white-space: nowrap;
+}
+.tbadge.tp { background: var(--purple); }
+.tbadge.tc { background: var(--coral); }
+.tbadge.tm { background: var(--mint); color: var(--dark); }
+.aname { font-weight: 800; font-size: 0.92rem; color: var(--dark); line-height: 1.2; }
+.chip {
+  font-size: 0.6rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 0.18rem 0.55rem; border-radius: 100px; border: 1.5px solid var(--dark); white-space: nowrap;
+}
+.ch-t { background: var(--gold-lt); }
+.ch-c { background: var(--purple-lt); }
+.ch-a { background: var(--mint-lt); }
+
+.achev {
+  width: 26px; height: 26px; border: 2px solid var(--dark); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.68rem; color: var(--dark);
+  transition: transform 0.28s;
+  flex-shrink: 0;
+}
+.atrig.open .achev { transform: rotate(180deg); background: var(--dark); color: white; }
+
+.abody { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.34s cubic-bezier(0.4,0,0.2,1); }
+.abody.open { grid-template-rows: 1fr; }
+.ainner { overflow: hidden; }
+.adcontent { padding: 0.7rem 1.1rem 1.1rem; border-top: 1.5px dashed rgba(0,0,0,0.08); }
+.adcontent p { font-size: 0.86rem; line-height: 1.65; color: rgba(42,26,62,0.68); }
+.adcontent p+p { margin-top: 0.5rem; }
+.ainst { display: inline-flex; align-items: center; gap: 0.35rem; margin-top: 0.55rem; font-size: 0.76rem; font-weight: 800; color: var(--purple); }
+.ainst::before { content:'👤'; }
+
+/* FORMS */
+.sw-form { background: var(--cream); }
+.sw-comp { background: linear-gradient(135deg, #2A1A3E, #4A2A6E); color: white; }
+
+.fcard {
+  background: white; border: 2.5px solid var(--dark); border-radius: 18px;
+  padding: 2.25rem 1.9rem; box-shadow: 6px 6px 0 var(--dark); position: relative;
+}
+.fcard::before {
+  content: ''; position: absolute; top: -2px; left: 10%; right: 10%; height: 4px;
+  background: linear-gradient(90deg, var(--purple), var(--pink), var(--coral));
+}
+.sw-comp .fcard::before { background: linear-gradient(90deg, var(--gold), var(--coral)); }
+
+.fkicker { font-size: 0.63rem; font-weight: 900; letter-spacing: 0.28em; text-transform: uppercase; color: var(--purple); margin-bottom: 0.3rem; }
+.sw-comp .fkicker { color: var(--gold-lt); }
+.ftitle { font-family: 'Fredoka One', cursive; font-size: clamp(1.7rem, 4vw, 2.3rem); color: var(--dark); margin-bottom: 0.35rem; line-height: 1.1; }
+.fsub { font-size: 0.85rem; color: rgba(42,26,62,0.5); margin-bottom: 1.5rem; line-height: 1.5; }
+.free-badge {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  background: var(--mint-lt); border: 2px solid var(--mint); border-radius: 100px;
+  padding: 0.28rem 0.85rem; font-weight: 800; font-size: 0.75rem; color: var(--dark);
+  margin-bottom: 1.25rem;
+}
+
+.fg { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+.fg .full { grid-column: 1/-1; }
+
+label { display: block; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(42,26,62,0.45); margin-bottom: 0.3rem; }
+input, select, textarea {
+  width: 100%; background: #FAFAFA; border: 2px solid rgba(42,26,62,0.13); border-radius: 10px;
+  padding: 0.68rem 0.9rem; font-family: 'Nunito', sans-serif; font-size: 0.88rem; font-weight: 600;
+  color: var(--dark); transition: border-color 0.2s, box-shadow 0.2s; outline: none; appearance: none;
+}
+input::placeholder, textarea::placeholder { color: rgba(42,26,62,0.28); font-weight: 400; }
+input:focus, select:focus, textarea:focus { border-color: var(--purple); box-shadow: 0 0 0 3px rgba(139,107,177,0.13); }
+select option { background: white; }
+textarea { resize: vertical; min-height: 78px; }
+
+.cbrow { display: flex; align-items: flex-start; gap: 0.7rem; margin-top: 0.2rem; }
+.cbrow input[type=checkbox] { width: 19px; height: 19px; flex-shrink: 0; margin-top: 2px; accent-color: var(--purple); cursor: pointer; }
+.cbrow p { font-size: 0.78rem; color: rgba(42,26,62,0.52); line-height: 1.5; }
+.cbrow p a { color: var(--purple); font-weight: 700; text-decoration: none; }
+
+.bsub {
+  display: block; width: 100%; margin-top: 1.4rem; padding: 0.9rem 1.25rem;
+  background: var(--purple); color: white;
+  font-family: 'Fredoka One', cursive; font-size: 1.15rem; letter-spacing: 0.04em;
+  border: 2.5px solid var(--dark); border-radius: 100px; box-shadow: 4px 4px 0 var(--dark);
+  cursor: pointer; transition: transform 0.14s, box-shadow 0.14s;
+}
+.bsub:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--dark); }
+.bsub:active { transform: translate(1px,1px); box-shadow: 2px 2px 0 var(--dark); }
+.bsub.bc { background: var(--coral); }
+.smsg { display: none; margin-top: 1rem; padding: 0.9rem 1.1rem; background: var(--mint-lt); border: 2px solid var(--mint); border-radius: 10px; font-weight: 700; font-size: 0.88rem; color: var(--dark); text-align: center; }
+
+/* FOOTER */
+footer { background: var(--dark); color: white; text-align: center; padding: 3rem 1.5rem 2rem; position: relative; overflow: hidden; }
+footer .bf1 { width: 240px; height: 240px; background: var(--purple); top: -80px; left: -60px; opacity: 0.3; }
+footer .bf2 { width: 190px; height: 190px; background: var(--pink); bottom: -55px; right: -40px; opacity: 0.2; }
+.flogo { font-family: 'Lilita One', cursive; font-size: 3rem; color: var(--gold-lt); -webkit-text-stroke: 2px var(--gold); text-shadow: 3px 3px 0 rgba(0,0,0,0.25); line-height: 1; position: relative; z-index: 1; }
+.fsub2 { font-family: 'Fredoka One', cursive; font-size: 0.88rem; letter-spacing: 0.3em; color: rgba(255,255,255,0.4); margin-top: 0.25rem; position: relative; z-index: 1; }
+.finfo { margin-top: 1.5rem; font-size: 0.84rem; line-height: 1.85; color: rgba(255,255,255,0.58); position: relative; z-index: 1; }
+.finfo strong { color: var(--gold-lt); }
+.fhandle { margin-top: 1.2rem; font-family: 'Fredoka One', cursive; font-size: 1.3rem; color: var(--pink); position: relative; z-index: 1; }
+.fby { margin-top: 1.5rem; font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.22); position: relative; z-index: 1; }
+
+/* ANIM */
+@keyframes popIn { from{opacity:0;transform:scale(0.86) translateY(10px);} to{opacity:1;transform:scale(1) translateY(0);} }
+
+/* RESPONSIVE */
+@media (max-width: 640px) {
+  .ag { grid-template-columns: 1fr; }
+  .mascot-col { display: none; }
+  .fg { grid-template-columns: 1fr; }
+  .fg .full { grid-column: 1; }
+  .atrig { grid-template-columns: 46px 1fr 26px; }
+  .chip { display: none; }
+  .fcard { padding: 1.6rem 1.1rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+
+  <div class="badge-top">Un evento propulsado por Meteorito y El Patio</div>
+
+  <div class="hero-logo">
+    <span class="w1">BASE</span>
+    <span class="w2">COMETA</span>
+    <span class="wm">Mérida</span>
+  </div>
+
+  <!-- Mascota -->
+  <div class="mascot-wrap">
+    <svg viewBox="0 0 200 230" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="100" cy="88" rx="72" ry="68" fill="#9B7BC4" stroke="#2A1A3E" stroke-width="3"/>
+      <circle cx="68" cy="60" r="9" fill="#8A6AB2" stroke="#2A1A3E" stroke-width="1.5"/>
+      <circle cx="132" cy="76" r="6" fill="#8A6AB2" stroke="#2A1A3E" stroke-width="1.5"/>
+      <circle cx="82" cy="114" r="5" fill="#8A6AB2" stroke="#2A1A3E" stroke-width="1.5"/>
+      <circle cx="122" cy="50" r="4" fill="#8A6AB2" stroke="#2A1A3E" stroke-width="1.5"/>
+      <line x1="100" y1="20" x2="104" y2="2" stroke="#2A1A3E" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="104" cy="2" r="4.5" fill="#C8973A" stroke="#2A1A3E" stroke-width="2"/>
+      <rect x="46" y="78" width="108" height="26" rx="7" fill="#E8C97A" stroke="#2A1A3E" stroke-width="2.5"/>
+      <rect x="50" y="81" width="42" height="20" rx="5" fill="#F4645C" stroke="#2A1A3E" stroke-width="1.5"/>
+      <rect x="108" y="81" width="42" height="20" rx="5" fill="#F4645C" stroke="#2A1A3E" stroke-width="1.5"/>
+      <circle cx="71" cy="91" r="6" fill="white" opacity="0.55"/>
+      <circle cx="129" cy="91" r="6" fill="white" opacity="0.55"/>
+      <circle cx="71" cy="91" r="2.5" fill="#2A1A3E"/>
+      <circle cx="129" cy="91" r="2.5" fill="#2A1A3E"/>
+      <circle cx="100" cy="112" r="6" fill="#C4A8E0" stroke="#2A1A3E" stroke-width="1.5"/>
+      <path d="M83 124 Q100 136 117 124" stroke="#2A1A3E" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <!-- capa -->
+      <path d="M72 155 C62 175 58 198 63 218 L75 215 C72 196 74 176 82 158Z" fill="#C8973A" stroke="#2A1A3E" stroke-width="1.5"/>
+      <path d="M128 155 C138 175 142 198 137 218 L125 215 C128 196 126 176 118 158Z" fill="#C8973A" stroke="#2A1A3E" stroke-width="1.5"/>
+      <!-- cuerpo traje -->
+      <rect x="73" y="152" width="54" height="38" rx="9" fill="#E8C97A" stroke="#2A1A3E" stroke-width="2.5"/>
+      <path d="M97 163 Q86 169 86 176 Q86 183 97 188" stroke="#9B7BC4" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <!-- pies -->
+      <ellipse cx="85" cy="194" rx="13" ry="8" fill="#C4A8E0" stroke="#2A1A3E" stroke-width="2"/>
+      <ellipse cx="115" cy="194" rx="13" ry="8" fill="#C4A8E0" stroke="#2A1A3E" stroke-width="2"/>
+      <!-- taza -->
+      <rect x="128" y="146" width="22" height="20" rx="5" fill="#9B7BC4" stroke="#2A1A3E" stroke-width="2"/>
+      <path d="M150 152 Q158 152 158 160 Q158 168 150 168" stroke="#2A1A3E" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <line x1="131" y1="152" x2="147" y2="152" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/>
+      <!-- mano izquierda -->
+      <circle cx="48" cy="155" r="9" fill="white" stroke="#2A1A3E" stroke-width="2"/>
+    </svg>
+  </div>
+
+  <div class="hero-badges">
+    <div class="hb">📅 29 · 30 · 31 Mayo 2026</div>
+    <div class="hb coral">🎟️ ¡Entrada gratuita!</div>
+    <div class="hb purple">☕ ¡Café gratis!</div>
+    <div class="hb">📍 Esquina La Gran Lucha, Centro</div>
+  </div>
+
+  <div class="cat-pills">
+    <div class="cp p">🎓 Clases</div>
+    <div class="cp r">⚡ Actividades</div>
+    <div class="cp g">🏆 Torneos</div>
+  </div>
+</section>
+
+<svg class="wave" viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+  <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#8B6BB1"/>
+</svg>
+
+<!-- ══ ABOUT ══ -->
+<div class="sw sw-about">
+  <div class="blob bba"></div>
+  <div class="si">
+    <div class="ag">
+      <div>
+        <div class="sk" style="color:rgba(255,255,255,0.45);">¿Qué es esto?</div>
+        <h2 class="st">Centro Alternativo de Café de Especialidad</h2>
+        <p>Base Cometa es el primer centro alternativo de café de especialidad de Mérida: tres días para descubrir, aprender y enamorarte de una cultura que va mucho más allá de una taza.</p>
+        <p>Un evento libre, abierto y con café gratis para todos — impulsado por Meteorito y El Patio en La Gran Lucha, en el corazón del centro histórico de Mérida.</p>
+        <div class="atags">
+          <span class="atag">3 días excepcionales</span>
+          <span class="atag">Entrada libre</span>
+          <span class="atag">Café gratis</span>
+          <span class="atag">Clases · Torneos · Actividades</span>
+        </div>
+      </div>
+      <div class="mascot-col">
+        <svg viewBox="0 0 200 230" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="100" cy="88" rx="72" ry="68" fill="#C4A8E0" stroke="#2A1A3E" stroke-width="3"/>
+          <circle cx="68" cy="60" r="9" fill="#B498D0" stroke="#2A1A3E" stroke-width="1.5"/>
+          <circle cx="132" cy="76" r="6" fill="#B498D0" stroke="#2A1A3E" stroke-width="1.5"/>
+          <line x1="100" y1="20" x2="104" y2="2" stroke="#2A1A3E" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="104" cy="2" r="4.5" fill="#F472A8" stroke="#2A1A3E" stroke-width="2"/>
+          <rect x="46" y="78" width="108" height="26" rx="7" fill="#E8C97A" stroke="#2A1A3E" stroke-width="2.5"/>
+          <rect x="50" y="81" width="42" height="20" rx="5" fill="#7ECFB3" stroke="#2A1A3E" stroke-width="1.5"/>
+          <rect x="108" y="81" width="42" height="20" rx="5" fill="#7ECFB3" stroke="#2A1A3E" stroke-width="1.5"/>
+          <circle cx="71" cy="91" r="7" fill="white" opacity="0.6"/>
+          <circle cx="129" cy="91" r="7" fill="white" opacity="0.6"/>
+          <circle cx="71" cy="91" r="3" fill="#2A1A3E"/>
+          <circle cx="129" cy="91" r="3" fill="#2A1A3E"/>
+          <circle cx="100" cy="112" r="6" fill="#C4A8E0" stroke="#2A1A3E" stroke-width="1.5"/>
+          <ellipse cx="100" cy="127" rx="7" ry="5" fill="#2A1A3E"/>
+          <path d="M72 155 C62 175 58 198 63 218 L75 215 C72 196 74 176 82 158Z" fill="#C8973A" stroke="#2A1A3E" stroke-width="1.5"/>
+          <path d="M128 155 C138 175 142 198 137 218 L125 215 C128 196 126 176 118 158Z" fill="#C8973A" stroke="#2A1A3E" stroke-width="1.5"/>
+          <rect x="73" y="152" width="54" height="38" rx="9" fill="#E8C97A" stroke="#2A1A3E" stroke-width="2.5"/>
+          <path d="M97 163 Q86 169 86 176 Q86 183 97 188" stroke="#9B7BC4" stroke-width="4" fill="none" stroke-linecap="round"/>
+          <ellipse cx="85" cy="194" rx="13" ry="8" fill="#C4A8E0" stroke="#2A1A3E" stroke-width="2"/>
+          <ellipse cx="115" cy="194" rx="13" ry="8" fill="#C4A8E0" stroke="#2A1A3E" stroke-width="2"/>
+          <circle cx="48" cy="155" r="9" fill="white" stroke="#2A1A3E" stroke-width="2"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+
+<svg class="wave" viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="transform:scaleY(-1);background:#8B6BB1;">
+  <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#B8EAD8"/>
+</svg>
+
+<!-- ══ AGENDA ══ -->
+<div class="sw sw-agenda">
+  <div class="si">
+    <div class="sk">Programa completo</div>
+    <h2 class="st">Agenda 📅</h2>
+
+    <div class="day-tabs">
+      <button class="dtab active" data-day="d29">Jue 29 Mayo</button>
+      <button class="dtab" data-day="d30">Vie 30 Mayo</button>
+      <button class="dtab" data-day="d31">Sáb 31 Mayo</button>
+    </div>
+
+    <!-- DÍA 29 -->
+    <div class="dpanel active" id="d29">
+      <div class="acc-list">
+        <div class="ai">
+          <button class="atrig" data-acc="a1">
+            <span class="tbadge tc">10 AM</span>
+            <span class="aname">Torneo Orea Cup</span>
+            <span class="chip ch-t">🏆 Torneo</span>
+            <span class="achev">▼</span>
+          </button>
+          <div class="abody" id="a1"><div class="ainner"><div class="adcontent">
+            <p>El primero de los tres torneos de Base Cometa: el Orea Cup. Baristas de toda la región se miden en este método de filtrado que premia la precisión y el paladar.</p>
+            <p>Si quieres competir, inscríbete en el formulario de más abajo.</p>
+          </div></div></div>
+        </div>
+        <div class="ai">
+          <button class="atrig" data-acc="a2">
+            <span class="tbadge tp">10 AM</span>
+            <span class="aname">Café de Especialidad — con Santiago Morales</span>
+            <span class="chip ch-c">🎓 Clase</span>
+            <span class="achev">▼</span>
+          </button>
+          <div class="abody" id="a2"><div class="ainner"><div class="adcontent">
+            <p>Familiarízate con las sutilezas de los cafés excepcionales: origen, proceso, tueste y cómo el método de preparación transforma lo que hay en tu taza.</p>
+            <div class="ainst">Santiago Morales</div>
+          </div></div></div>
+        </div>
+        <div class="ai">
+          <button class="atrig" data-acc="a3">
+            <span class="tbadge tm">2 PM</span>
+            <span class="aname">Café de Especialidad — segunda sesión</span>
+            <span class="chip ch-c">🎓 Clase</span>
+            <span class="achev">▼</span>
+          </button>
+          <div class="abody" id="a3"><div class="ainner"><div class="adcontent">
+            <p>Segunda ronda de la clase de café de especialidad para quienes no pudieron entrar por la mañana. Mismo contenido, misma calidad.</p>
+            <div class="ainst">Santiago Morales</div>
+          </div></div></div>
+        </div>
+        <div class="ai">
+          <button class="atrig" data-acc="a4">
+            <span class="tbadge">Todo el día</span>
+            <span class="aname">Cerámica — con Alambra Cerámica</span>
+            <span class="chip ch-a">⚡ Actividad</span>
+            <span class="achev">▼</span>
+          </button>
+          <div class="abody" id="a4"><div class="ainner"><div class="adcontent">
+            <p>Taller de cerámica donde el café se encuentra con el arte. Alambra Cerámica guía a los participantes para crear tazas y piezas únicas con las manos en la arcilla.</p>
+          </div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DÍA 30 -->
+    <div class="dpanel" id="d30">
+      <div class="acc-list">
+        <div class="ai">
+          <button class="atrig" data-acc="b1">
+            <span class="tbadge tc">10 AM</span>
+            <span class="aname">Torneo Aeropress</span>
+            <span class="chip ch-t">🏆 Torneo</span>
+            <span class="achev">▼</span>
+          </button>
+          <div class="abody" id="b1"><div class="ainner"><div class="adcontent">
+            <p>El torneo más democrático del café: reglas simples, creatividad al máximo. Cada competidor trae su receta y la defiende ante el jurado. ¿Tienes tu método favorito?</p>
+          </div></div></div>
+        </div>
+        <div class="ai">
+          <button class="atrig" data-acc="b2">
+            <span class="tbadge tp">10 AM</span>
+            <span class="aname">Pi-lattes</span>
+            <span class="chip ch-c">🎓 Clase</span>
+            <span class="achev">▼</span>
+          </button>
+          <div class="abody" id="b2"><div class="ainner"><div class="adcontent">
+            <p>Aprende a vaporizar leche, crear textura perfecta y dar tus primeros pasos en latte art. Una clase práctica, accesible para todos los niveles.</p>
+          </div></div></div>
+        </div>
+        <div class="ai">
+          <button class="atrig" data-acc="b3">
+            <span class="tbadge tm">12 PM</span>
+            <span class="aname">Coffee-run</span>
+            <span class="chip ch-a">⚡ Actividad</span>
+            <span class="achev">▼</span>
+          </button>
+          <div class="abody" id="b3"><div class="ainner"><div class="adcontent">
+            <p>Una carrera ligera por el centro de Mérida que termina con un café de especialidad en mano. Movimiento, comunidad y buena taza.</p>
+          </div></div></div>
+        </div>
+        <div class="ai">
+          <button class="atrig" data-acc="b4">
+            <span class="tbadge tp">2 PM</span>
+            <span class="aname">Pi-lattes — segunda sesión</span>
+            <span class="chip ch-c">🎓 Clase</span>
+            <span class="achev">▼</span>
+          </button>
+          <div class="abody" id="b4"><div class="ainner"><div class="adcontent">
+            <p>Misma clase, segundo turno. Si ya fuiste en la mañana, ven a practicar más. Si es tu primera vez, bienvenido.</p>
+          </div></div></div>
+        </div>
+        <div class="ai">
+          <button class="atrig" data-acc="b5">
+            <span class="tbadge tm">4 PM</span>
+            <span class="aname">Coffee-run — segunda vuelta</span>
+            <span class="chip ch-a">⚡ Actividad</span>
+            <span class="achev">▼</span>
+          </button>
+          <div class="abody" id="b5"><div class="ainner"><div class="adcontent">
+            <p>Perfecta si prefieres correr cuando el calor bajó un poco. Termina, como siempre, con un buen café esperándote.</p>
+          </div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DÍA 31 -->
+    <div class="dpanel" id="d31">
+      <div class="acc-list">
+        <div class="ai">
+          <button class="atrig" data-acc="c1">
+            <span class="tbadge tc">10 AM</span>
+            <span class="aname">Torneo V60</span>
+            <span class="chip ch-t">🏆 Torneo</span>
+            <span class="achev">▼</span>
+          </button>
+          <div class="abody" id="c1"><div class="ainner"><div class="adcontent">
+            <p>El último y más icónico torneo: el V60. Técnica de vertido, temperatura, gramaje — todo importa. Tres oportunidades para ser campeón del café. Esta es la última.</p>
+          </div></div></div>
+        </div>
+        <div class="ai">
+          <button class="atrig" data-acc="c2">
+            <span class="tbadge tp">10 AM</span>
+            <span class="aname">Pi-lattes</span>
+            <span class="chip ch-c">🎓 Clase</span>
+            <span class="achev">▼</span>
+          </button>
+          <div class="abody" id="c2"><div class="ainner"><div class="adcontent">
+            <p>Última sesión de Pi-lattes del evento. Si ya fuiste los días anteriores, ven a perfeccionar. Si es tu primera vez, bienvenido a la mejor forma de aprender latte art.</p>
+          </div></div></div>
+        </div>
+        <div class="ai">
+          <button class="atrig" data-acc="c3">
+            <span class="tbadge tm">12 PM</span>
+            <span class="aname">Coffee-run</span>
+            <span class="chip ch-a">⚡ Actividad</span>
+            <span class="achev">▼</span>
+          </button>
+          <div class="abody" id="c3"><div class="ainner"><div class="adcontent">
+            <p>El Coffee-run final de Base Cometa. Corre por el centro de Mérida y celebra el cierre del evento con la comunidad que se formó estos tres días.</p>
+          </div></div></div>
+        </div>
+        <div class="ai">
+          <button class="atrig" data-acc="c4">
+            <span class="tbadge tp">5 PM</span>
+            <span class="aname">Pi-lattes — sesión de cierre</span>
+            <span class="chip ch-c">🎓 Clase</span>
+            <span class="achev">▼</span>
+          </button>
+          <div class="abody" id="c4"><div class="ainner"><div class="adcontent">
+            <p>La última clase del evento para cerrar con broche de oro. Aprende latte art mientras Base Cometa llega a su fin.</p>
+          </div></div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<svg class="wave" viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="background:#B8EAD8;">
+  <path d="M0,30 C360,0 1080,60 1440,30 L1440,60 L0,60 Z" fill="#F5EDD4"/>
+</svg>
+
+<!-- ══ FORM ASISTENTES ══ -->
+<div class="sw sw-form">
+  <div class="si" style="max-width:640px;">
+    <div class="sk">¿Vienes?</div>
+    <h2 class="st" style="color:var(--purple);">Regístrate 🚀</h2>
+    <div class="fcard" id="registro">
+      <div class="free-badge">🎟️ Entrada completamente gratuita</div>
+      <div class="fkicker">Registro de asistentes</div>
+      <div class="ftitle">Reserva tu lugar</div>
+      <div class="fsub">29, 30 y 31 de mayo · Esquina La Gran Lucha, Centro, Mérida, Yuc.</div>
+      <form id="regForm" novalidate>
+        <div class="fg">
+          <div><label for="nombre">Nombre *</label><input type="text" id="nombre" placeholder="Tu nombre" required></div>
+          <div><label for="apellido">Apellido *</label><input type="text" id="apellido" placeholder="Tu apellido" required></div>
+          <div><label for="email">Correo *</label><input type="email" id="email" placeholder="correo@ejemplo.com" required></div>
+          <div><label for="telefono">Teléfono</label><input type="tel" id="telefono" placeholder="+52 999 000 0000"></div>
+          <div class="full">
+            <label for="dias">¿Qué días vienes? *</label>
+            <select id="dias" required>
+              <option value="" disabled selected>Selecciona</option>
+              <option>Jueves 29 de Mayo</option>
+              <option>Viernes 30 de Mayo</option>
+              <option>Sábado 31 de Mayo</option>
+              <option>Los tres días 🙌</option>
+            </select>
+          </div>
+          <div class="full">
+            <label for="interes">¿Qué te interesa más?</label>
+            <select id="interes">
+              <option value="" disabled selected>Selecciona una opción</option>
+              <option>Las clases (Pi-lattes, Café de especialidad)</option>
+              <option>Los torneos (Orea Cup, Aeropress, V60)</option>
+              <option>Las actividades (Cerámica, Coffee-run)</option>
+              <option>Todo por igual</option>
+              <option>Principalmente el café gratis 😄</option>
+            </select>
+          </div>
+          <div class="full">
+            <div class="cbrow">
+              <input type="checkbox" id="acepto" required>
+              <p>Acepto recibir información sobre el evento y futuras ediciones de Base Cometa. <a href="#">Aviso de privacidad.</a></p>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="bsub">¡Quiero ir a Base Cometa! 🚀</button>
+        <div class="smsg" id="successMsg">¡Listo! Te esperamos en La Gran Lucha 🎉 Revisa tu correo para más detalles.</div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FORM COMPETIDORES ══ -->
+<div class="sw sw-comp">
+  <div class="si" style="max-width:640px;">
+    <div class="sk" style="color:var(--gold-lt);opacity:1;">¿Eres barista?</div>
+    <h2 class="st" style="color:var(--gold-lt);">Compite 🏆</h2>
+    <p style="color:rgba(255,255,255,0.58);font-size:0.9rem;margin-bottom:2rem;line-height:1.65;">Tres oportunidades para convertirte en campeón del café. Orea Cup · Aeropress · V60.</p>
+    <div class="fcard" id="competidores">
+      <div class="fkicker">Inscripción a torneos</div>
+      <div class="ftitle">Quiero competir</div>
+      <div class="fsub">Selecciona tu torneo y llena tus datos</div>
+      <form id="compForm" novalidate>
+        <div class="fg">
+          <div><label for="c-nombre">Nombre *</label><input type="text" id="c-nombre" placeholder="Tu nombre" required></div>
+          <div><label for="c-apellido">Apellido *</label><input type="text" id="c-apellido" placeholder="Tu apellido" required></div>
+          <div><label for="c-email">Correo *</label><input type="email" id="c-email" placeholder="correo@ejemplo.com" required></div>
+          <div><label for="c-tel">Teléfono *</label><input type="tel" id="c-tel" placeholder="+52 999 000 0000" required></div>
+          <div class="full"><label for="c-cafe">Cafetería o proyecto</label><input type="text" id="c-cafe" placeholder="Nombre del lugar (o 'Independiente')"></div>
+          <div class="full">
+            <label for="c-torneo">Torneo *</label>
+            <select id="c-torneo" required>
+              <option value="" disabled selected>Selecciona tu categoría</option>
+              <option value="orea">🥇 Orea Cup — Jueves 29 de Mayo · 10 AM</option>
+              <option value="aero">🥊 Aeropress — Viernes 30 de Mayo · 10 AM</option>
+              <option value="v60">🏅 V60 — Sábado 31 de Mayo · 10 AM</option>
+            </select>
+          </div>
+          <div class="full">
+            <label for="c-exp">Años de experiencia</label>
+            <select id="c-exp">
+              <option value="" disabled selected>Selecciona</option>
+              <option>Menos de 1 año</option>
+              <option>1 – 2 años</option>
+              <option>3 – 5 años</option>
+              <option>Más de 5 años</option>
+            </select>
+          </div>
+          <div class="full"><label for="c-notas">¿Algo más que quieras decirnos?</label><textarea id="c-notas" placeholder="Tu receta, tu método favorito, por qué quieres competir…"></textarea></div>
+          <div class="full">
+            <div class="cbrow">
+              <input type="checkbox" id="c-acepto" required>
+              <p>Acepto el reglamento de competencias de Base Cometa 2026. <a href="#">Ver reglamento.</a></p>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="bsub bc">Inscribirme al torneo 🏆</button>
+        <div class="smsg" id="compSuccessMsg">¡Inscripción recibida! Te contactamos pronto con los detalles. ¡A calentar motores! ☕</div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="blob bf1"></div>
+  <div class="blob bf2"></div>
+  <div class="flogo">BASE COMETA</div>
+  <div class="fsub2">Mérida · 2026</div>
+  <div class="finfo">
+    <strong>29 · 30 · 31 de Mayo, 2026</strong><br>
+    Esquina La Gran Lucha<br>
+    C. 49 466-X 52, Centro, 97000 Mérida, Yuc.<br><br>
+    🎟️ Entrada gratuita &nbsp;·&nbsp; ☕ Café gratis
+  </div>
+  <div class="fhandle">@base.cometa</div>
+  <div class="fby">Un evento propulsado por Meteorito y El Patio</div>
+</footer>
+
+<script>
+// Accordion
+document.querySelectorAll('.atrig').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const id = btn.dataset.acc;
+    const body = document.getElementById(id);
+    const open = body.classList.contains('open');
+    const panel = btn.closest('.dpanel');
+    panel.querySelectorAll('.abody').forEach(b => b.classList.remove('open'));
+    panel.querySelectorAll('.atrig').forEach(b => b.classList.remove('open'));
+    if (!open) { body.classList.add('open'); btn.classList.add('open'); }
+  });
+});
+
+// Day tabs
+document.querySelectorAll('.dtab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.dtab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.dpanel').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById(tab.dataset.day).classList.add('active');
+  });
+});
+
+// Form asistentes
+document.getElementById('regForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  if (!document.getElementById('nombre').value.trim() ||
+      !document.getElementById('email').value.trim() ||
+      !document.getElementById('dias').value ||
+      !document.getElementById('acepto').checked) {
+    alert('Por favor completa los campos obligatorios y acepta el aviso de privacidad.');
+    return;
+  }
+  this.querySelectorAll('input,select,textarea,button').forEach(el => el.disabled = true);
+  document.getElementById('successMsg').style.display = 'block';
+});
+
+// Form competidores
+document.getElementById('compForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  if (!document.getElementById('c-nombre').value.trim() ||
+      !document.getElementById('c-email').value.trim() ||
+      !document.getElementById('c-tel').value.trim() ||
+      !document.getElementById('c-torneo').value ||
+      !document.getElementById('c-acepto').checked) {
+    alert('Por favor completa los campos obligatorios y acepta el reglamento.');
+    return;
+  }
+  this.querySelectorAll('input,select,textarea,button').forEach(el => el.disabled = true);
+  document.getElementById('compSuccessMsg').style.display = 'block';
+});
+</script>
+</body>
+</html>
