@@ -30,7 +30,7 @@ body { background: var(--cream); color: var(--dark); font-family: 'Truculenta', 
   position: relative;
   background-image: linear-gradient(162deg, #cbe2d3 0%, #cbe2d3 20%, #ffbeff 50%, #ff5a5a 100%);
   min-height: 100vh;
-  display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+  display: flex; flex-direction: column; align-items: center; justify-content: space-between;
   text-align: center; padding: 2rem 2rem 2.5rem; overflow: hidden; gap: 0;
 }
 
@@ -169,7 +169,7 @@ body { background: var(--cream); color: var(--dark); font-family: 'Truculenta', 
   .hero-top { grid-template-columns: 1fr; }
   .hero-tagline { display: none; }
   .mascot-wrap { width: clamp(200px, 80vw, 340px); margin: 0 auto; }
-  .hero-bottom { grid-template-columns: auto 1fr; grid-template-rows: auto auto; }
+  .hero-bottom { display:flex; flex-direction: column; gap:2rem;margin-top: auto; grid-template-columns: auto 1fr; grid-template-rows: auto auto; }
   .hero-badges-img { grid-column: 1/-1; justify-content: center; }
 }
 
