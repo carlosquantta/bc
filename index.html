@@ -31,7 +31,7 @@ body { background: var(--cream); color: var(--dark); font-family: 'Truculenta', 
   background-image: linear-gradient(162deg, #cbe2d3 0%, #cbe2d3 20%, #ffbeff 50%, #ff5a5a 100%);
   min-height: 100vh;
   display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
-  text-align: center; padding: 2rem 1.25rem 2.5rem; overflow: hidden; gap: 0;
+  text-align: center; padding: 2rem 2rem 2.5rem; overflow: hidden; gap: 0;
 }
 
 /* fondo SVG cubre todo, 20% opacidad */
@@ -40,20 +40,7 @@ body { background: var(--cream); color: var(--dark); font-family: 'Truculenta', 
   display: flex; align-items: center; justify-content: center;
   pointer-events: none; opacity: 0.2;
 }
-.hero-fondo svg {
-  width: 100%; height: 100%;
-  transform: scaleX(-1);
-  fill: white;
-}
-
-/* top strip: propulsado por */
-.badge-top {
-  position: relative; z-index: 2;
-  background: var(--dark); color: var(--gold-lt);
-  font-weight: 900; font-size: 0.58rem; letter-spacing: 0.25em; text-transform: uppercase;
-  padding: 0.3rem 1rem; border-radius: 100px;
-  margin-bottom: 1rem;
-}
+.hero-fondo svg { width: 100%; height: 100%; transform: scaleX(-1); fill: white; }
 
 /* top 3-column row: tagline | mascot | tagline */
 .hero-top {
@@ -61,38 +48,47 @@ body { background: var(--cream); color: var(--dark); font-family: 'Truculenta', 
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  gap: 0.75rem;
-  width: 100%; max-width: 820px;
+  gap: 1rem;
+  width: 100%; max-width: 1400px;
 }
 .hero-tagline {
   font-family: 'Truculenta', sans-serif;
-  font-size: clamp(0.62rem, 1.6vw, 0.9rem);
-  font-weight: 900;
-  line-height: 1.35;
+  font-size: clamp(0.75rem, 1.4vw, 1.05rem);
+  font-weight: 300;
+  line-height: 1.4;
   text-transform: uppercase;
   color: var(--dark);
 }
-.hero-tagline strong { display: block; }
+.hero-tagline strong {
+  display: block;
+  font-weight: 900;
+}
 .hero-tagline.left  { text-align: left; }
 .hero-tagline.right { text-align: right; }
 
+/* mascota: fija, sin animación, grande */
 .mascot-wrap {
-  width: clamp(160px, 35vw, 380px);
-  animation: float 3.2s ease-in-out infinite;
+  width: clamp(220px, 42vw, 520px);
   flex-shrink: 0;
 }
 .mascot-wrap img { width: 100%; height: auto; display: block; filter: drop-shadow(0 6px 18px rgba(0,0,0,0.18)); }
-@keyframes float { 0%,100%{transform:translateY(0) rotate(-1.5deg);} 50%{transform:translateY(-10px) rotate(1.5deg);} }
 
-/* pills clases/actividades/torneos */
+/* pills clases/actividades/torneos con float */
 .cat-pills {
   position: relative; z-index: 2;
-  display: flex; gap: clamp(0.4rem, 2vw, 1rem);
+  display: flex; gap: clamp(0.75rem, 3vw, 2rem);
   justify-content: center; align-items: center;
   flex-wrap: nowrap;
-  margin: 0.25rem 0;
+  margin: 0.5rem 0;
 }
-.cat-pills img { height: clamp(42px, 9vw, 72px); width: auto; }
+.cat-pills img {
+  height: clamp(56px, 11vw, 100px);
+  width: auto;
+  animation: floatPill 3s ease-in-out infinite;
+}
+.cat-pills img:nth-child(2) { animation-delay: 0.4s; }
+.cat-pills img:nth-child(3) { animation-delay: 0.8s; }
+@keyframes floatPill { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-8px);} }
 
 /* bottom info block */
 .hero-bottom {
@@ -100,57 +96,56 @@ body { background: var(--cream); color: var(--dark); font-family: 'Truculenta', 
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
-  gap: 1rem;
-  width: 100%; max-width: 820px;
+  gap: 1.5rem;
+  width: 100%; max-width: 1400px;
   margin-top: 0.75rem;
-  padding: 1rem 1.25rem;
+  padding: 0.5rem 0;
 }
 
-.hero-date {
-  text-align: left;
-  line-height: 1;
-}
+.hero-date { text-align: left; line-height: 1; }
 .date-nums {
   display: block;
   font-family: 'Truculenta', sans-serif;
-  font-size: clamp(1.6rem, 5vw, 2.8rem);
+  font-size: clamp(1.8rem, 4vw, 3rem);
   font-weight: 900;
-  color: var(--dark);
+  color: #f9efd8;
+  text-shadow: 3px 3px 0 var(--dark);
   letter-spacing: -0.02em;
 }
 .date-month {
   display: block;
   font-family: 'Truculenta', sans-serif;
-  font-size: clamp(2.8rem, 9vw, 5.5rem);
+  font-size: clamp(3.5rem, 10vw, 6.5rem);
   font-weight: 900;
-  color: var(--dark);
-  line-height: 0.9;
+  color: #f9efd8;
+  text-shadow: 4px 4px 0 var(--dark);
+  line-height: 0.88;
   letter-spacing: -0.03em;
-  margin-top: -0.1em;
+  margin-top: -0.05em;
 }
 
 .hero-location {
   text-align: left;
-  font-size: clamp(0.62rem, 1.5vw, 0.82rem);
+  font-size: clamp(0.7rem, 1.4vw, 0.95rem);
   font-weight: 800;
-  line-height: 1.5;
+  line-height: 1.55;
   text-transform: uppercase;
-  color: var(--dark);
+  color: #f9efd8;
+  text-shadow: 2px 2px 0 var(--dark);
 }
 .hero-location .loc-main {
-  font-size: clamp(0.78rem, 2vw, 1rem);
-  display: block; margin-bottom: 0.25rem;
+  font-size: clamp(0.85rem, 1.8vw, 1.1rem);
+  display: block; margin-bottom: 0.2rem;
 }
-.hero-location .loc-addr {
-  opacity: 0.6; font-weight: 700;
-}
+.hero-location .loc-addr { font-weight: 600; opacity: 0.85; }
 
+/* badges entrada/café: lado a lado */
 .hero-badges-img {
-  display: flex; flex-direction: column; gap: 0.5rem; align-items: center;
+  display: flex; flex-direction: row; gap: 0.75rem; align-items: center;
 }
 .hero-badges-img img {
-  width: clamp(62px, 12vw, 96px); height: auto;
-  filter: drop-shadow(0 3px 8px rgba(0,0,0,0.12));
+  width: clamp(72px, 10vw, 110px); height: auto;
+  filter: drop-shadow(0 3px 8px rgba(0,0,0,0.15));
   transition: transform 0.2s;
 }
 .hero-badges-img img:hover { transform: scale(1.06) rotate(-3deg); }
@@ -158,31 +153,32 @@ body { background: var(--cream); color: var(--dark); font-family: 'Truculenta', 
 /* badge footer */
 .badge-bottom {
   position: relative; z-index: 2;
-  font-size: 0.58rem; font-weight: 700;
+  font-size: clamp(0.62rem, 1vw, 0.78rem);
+  font-weight: 700;
   letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--dark); opacity: 0.6;
-  margin-top: 1rem;
+  color: #f9efd8;
+  text-shadow: 1px 1px 0 var(--dark);
+  margin-top: 1.25rem;
 }
 
-/* cp classes kept for compat */
 .cp { display: none; }
 
 /* responsive */
-@media (max-width: 600px) {
-  .hero-top { grid-template-columns: 1fr; gap: 0; }
+@media (max-width: 700px) {
+  .hero { padding: 1.5rem 1rem 2rem; }
+  .hero-top { grid-template-columns: 1fr; }
   .hero-tagline { display: none; }
-  .mascot-wrap { width: clamp(200px, 75vw, 320px); margin: 0 auto; }
-  .hero-bottom { grid-template-columns: auto 1fr; grid-template-rows: auto auto; gap: 0.75rem; }
-  .hero-badges-img { flex-direction: row; grid-column: 1/-1; justify-content: center; }
-  .hero-location { grid-column: 2; }
+  .mascot-wrap { width: clamp(200px, 80vw, 340px); margin: 0 auto; }
+  .hero-bottom { grid-template-columns: auto 1fr; grid-template-rows: auto auto; }
+  .hero-badges-img { grid-column: 1/-1; justify-content: center; }
 }
 
 /* WAVE */
 .wave { display: block; width: 100%; line-height: 0; }
 
 /* SECTIONS */
-.sw { position: relative; overflow: hidden; padding: 4.5rem 1.5rem; }
-.si { max-width: 820px; margin: 0 auto; }
+.sw { position: relative; overflow: hidden; padding: 4.5rem 2rem; }
+.si { max-width: 1400px; margin: 0 auto; }
 .sk { font-weight: 900; font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase; opacity: 0.45; margin-bottom: 0.4rem; }
 .st { font-family: 'Truculenta', sans-serif; font-size: clamp(2.4rem, 6vw, 3.8rem); line-height: 1; margin-bottom: 1.75rem; }
 
