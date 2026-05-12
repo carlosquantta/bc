@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quantta - Mesh Animado Pro</title>
+    <title>Quantta - Mesh Animado Avanzado</title>
     <style>
         :root {
-            --bg-color: #231501;
-            --blue-color: #80A9DA;
-            --green-color: #D2FF4A;
+            --bg-color: #231501; /* Fondo marrón-negro profundo */
+            --blue-color: #80A9DA; /* Azul grisáceo */
+            --green-color: #D2FF4A; /* Verde-amarillo eléctrico */
         }
 
         body, html {
@@ -31,60 +31,105 @@
             overflow: hidden;
         }
 
-        /* Configuración de las bolas */
+        /* Configuración base de los blobs */
         .blob {
             position: absolute;
             border-radius: 50%;
-            filter: blur(100px); /* Desenfoque más suave */
-            opacity: 0.5;
-            animation: move infinite alternate ease-in-out;
+            filter: blur(80px); /* Desenfoque intenso para efecto de nube */
+            opacity: 0.6; /* Un poco más de opacidad */
             will-change: transform;
+            /* La animación de movimiento base se aplica a todos */
+            animation: moveSlow infinite alternate ease-in-out;
         }
 
         /* Verdes */
-        .v1 { width: 50vw; height: 50vw; background: var(--green-color); top: -10%; left: -10%; animation-duration: 15s; }
-        .v2 { width: 40vw; height: 40vw; background: var(--green-color); bottom: -5%; right: 15%; animation-duration: 22s; animation-delay: -3s; }
-
-        /* Azules */
-        .a1 { width: 45vw; height: 45vw; background: var(--blue-color); top: 10%; right: -5%; animation-duration: 18s; animation-delay: -5s; }
-        .a2 { width: 35vw; height: 35vw; background: var(--blue-color); bottom: 10%; left: 5%; animation-duration: 25s; }
-
-        @keyframes move {
-            0% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(8vw, 12vh) scale(1.15); }
-            100% { transform: translate(-4vw, 5vh) scale(0.95); }
+        .v1 {
+            width: 45vw; height: 45vw;
+            background: var(--green-color);
+            top: -15%; left: -10%;
+            animation-duration: 25s; /* Movimiento lento y orgánico */
+            animation-name: moveV1;
+        }
+        .v2 {
+            width: 35vw; height: 35vw;
+            background: var(--green-color);
+            bottom: -5%; right: 10%;
+            animation-duration: 20s;
+            animation-delay: -5s; /* Desfase para que no se muevan juntos */
+            animation-name: moveV2;
         }
 
-        /* GRANO FINO - Ajustado para que no se vea pixelado */
+        /* Azules */
+        .a1 {
+            width: 40vw; height: 40vw;
+            background: var(--blue-color);
+            top: 10%; right: -5%;
+            animation-duration: 22s;
+            animation-delay: -2s;
+            animation-name: moveA1;
+        }
+        .a2 {
+            width: 30vw; height: 30vw;
+            background: var(--blue-color);
+            bottom: 15%; left: 5%;
+            animation-duration: 18s;
+            animation-delay: -7s;
+            animation-name: moveA2;
+        }
+
+        /* Animaciones para cada blob - Trayectorias aleatorias */
+        @keyframes moveV1 {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(10vw, 5vh) scale(1.1); }
+            100% { transform: translate(-5vw, 15vh) scale(0.95); }
+        }
+        @keyframes moveV2 {
+            0% { transform: translate(0, 0) scale(1.1); }
+            50% { transform: translate(-12vw, -8vh) scale(1); }
+            100% { transform: translate(8vw, -15vh) scale(1.05); }
+        }
+        @keyframes moveA1 {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-10vw, 15vh) scale(1.05); }
+            100% { transform: translate(15vw, -5vh) scale(0.98); }
+        }
+        @keyframes moveA2 {
+            0% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(8vw, -10vh) scale(0.9); }
+            66% { transform: translate(-15vw, 5vh) scale(1.15); }
+            100% { transform: translate(5vw, 15vh) scale(1); }
+        }
+
+        /* GRANO FINO - Usando SVG Fractal Noise sutil */
         .grain {
             position: absolute;
             inset: 0;
             z-index: 10;
             pointer-events: none;
-            opacity: 0.12; /* Más sutil */
-            /* Se aumentó baseFrequency a 0.9 para grano más pequeño */
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            opacity: 0.15; /* Más sutil para grano ultra fino */
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.5' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            /* Se aumentó baseFrequency para un grano más fino y denso */
         }
 
-        /* Logo */
+        /* Logo Central */
         .logo {
             position: relative;
             z-index: 20;
             text-align: center;
             color: var(--green-color);
-            font-family: 'Times New Roman', Times, serif;
-            text-shadow: 0 0 20px rgba(0,0,0,0.3);
+            font-family: 'Times New Roman', Times, serif; /* Usando serif como en la imagen */
+            text-shadow: 0 0 20px rgba(0,0,0,0.3); /* Un poco de profundidad */
         }
 
         .logo h1 {
-            font-size: clamp(2.5rem, 10vw, 5rem);
+            font-size: clamp(3rem, 12vw, 6rem); /* Tipografía grande y adaptable */
             margin: 0;
             font-weight: 700;
-            letter-spacing: -1px;
+            letter-spacing: -2px;
         }
 
         .logo p {
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 6px;
             margin-top: -5px;
