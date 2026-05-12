@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quantta - Mesh Amorfo</title>
+    <title>Quantta - Mesh Espaciado</title>
     <style>
         :root {
             --bg-color: #231501;
@@ -31,48 +31,47 @@
             overflow: hidden;
         }
 
-        /* Configuración de formas AMORFAS */
+        /* Blobs más pequeños y con bordes más irregulares */
         .blob {
             position: absolute;
-            /* Radio irregular para que no parezcan círculos */
-            border-radius: 40% 60% 60% 40% / 40% 40% 60% 60%;
-            filter: blur(140px); /* Blur aumentado para suavidad extrema */
-            opacity: 0.55;
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            filter: blur(100px); /* Ajustado para el nuevo tamaño */
+            opacity: 0.4; /* Más transparente para que domine el fondo oscuro */
             will-change: transform;
             animation: move infinite alternate ease-in-out;
         }
 
-        /* Blobs con posiciones y tamaños randomizados */
-        .v1 { width: 60vw; height: 45vw; background: var(--green-color); top: -20%; left: -10%; animation-duration: 12s; animation-name: moveV1; }
-        .v2 { width: 50vw; height: 60vw; background: var(--green-color); bottom: -15%; right: 5%; animation-duration: 18s; animation-name: moveV2; }
-        .a1 { width: 55vw; height: 50vw; background: var(--blue-color); top: 5%; right: -15%; animation-duration: 15s; animation-name: moveA1; }
-        .a2 { width: 45vw; height: 40vw; background: var(--blue-color); bottom: 5%; left: -5%; animation-duration: 20s; animation-name: moveA2; }
+        /* Tamaños reducidos para que se vea el fondo */
+        .v1 { width: 30vw; height: 25vw; background: var(--green-color); top: 5%; left: 10%; animation-duration: 10s; animation-name: moveV1; }
+        .v2 { width: 25vw; height: 30vw; background: var(--green-color); bottom: 10%; right: 15%; animation-duration: 14s; animation-name: moveV2; }
+        .a1 { width: 35vw; height: 25vw; background: var(--blue-color); top: 20%; right: 10%; animation-duration: 12s; animation-name: moveA1; }
+        .a2 { width: 28vw; height: 28vw; background: var(--blue-color); bottom: 15%; left: 15%; animation-duration: 16s; animation-name: moveA2; }
 
-        /* Movimientos con trayectorias más agresivas */
+        /* Movimientos aleatorios por toda la pantalla */
         @keyframes moveV1 {
-            0% { transform: translate(0, 0) rotate(0deg) scale(1); }
-            100% { transform: translate(20vw, 15vh) rotate(45deg) scale(1.2); }
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(40vw, 20vh) rotate(90deg); }
         }
         @keyframes moveV2 {
             0% { transform: translate(0, 0) rotate(0deg); }
-            100% { transform: translate(-25vw, -20vh) rotate(-30deg) scale(1.1); }
+            100% { transform: translate(-35vw, -40vh) rotate(-45deg); }
         }
         @keyframes moveA1 {
             0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(-30vw, 25vh) scale(0.8) rotate(90deg); }
+            100% { transform: translate(-45vw, 30vh) scale(1.2) rotate(120deg); }
         }
         @keyframes moveA2 {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            100% { transform: translate(15vw, -30vh) rotate(-60deg) scale(1.3); }
+            0% { transform: translate(0, 0) scale(1.2); }
+            100% { transform: translate(30vw, -35vh) scale(0.8) rotate(-90deg); }
         }
 
-        /* GRANO ULTRA CHICO - Frecuencia 1.8 */
+        /* GRANO ULTRA FINO */
         .grain {
             position: absolute;
             inset: 0;
             z-index: 10;
             pointer-events: none;
-            opacity: 0.18;
+            opacity: 0.15;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
         }
 
@@ -85,18 +84,18 @@
         }
 
         .logo h1 {
-            font-size: clamp(3rem, 12vw, 6rem);
+            font-size: clamp(2.5rem, 10vw, 5rem);
             margin: 0;
             font-weight: 700;
             letter-spacing: -2px;
         }
 
         .logo p {
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
-            letter-spacing: 6px;
+            letter-spacing: 5px;
             margin-top: -5px;
-            font-weight: 400;
+            opacity: 0.8;
         }
     </style>
 </head>
