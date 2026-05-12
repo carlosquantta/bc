@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantta Style - Mesh Gradient Animado</title>
+    <style>
+        /* 1. Reset y Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            background-color: #0d0d0d; /* Fondo oscuro profundo */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: 'Times New Roman', serif;
+        }
+
+        /* 2. Contenedor del gradiente */
+        .gradient-wrapper {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            background: #0d0d0d;
+            overflow: hidden;
+        }
+
+        /* 3. Las "Manchas" (Blobs) */
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px); /* El desenfoque crea el efecto mesh */
+            opacity: 0.5;
+            animation: move 25s infinite alternate ease-in-out;
+        }
+
+        .blob-1 {
+            width: 700px;
+            height: 700px;
+            background: #d4e157; /* Verde lima de la imagen */
+            top: -150px;
+            left: -150px;
+        }
+
+        .blob-2 {
+            width: 800px;
+            height: 800px;
+            background: #7ba6c9; /* Azul grisáceo de la imagen */
+            bottom: -200px;
+            right: -100px;
+            animation-duration: 30s;
+            animation-delay: -5s;
+        }
+
+        .blob-3 {
+            width: 500px;
+            height: 500px;
+            background: #3e4a2e; /* Tono oliva oscuro */
+            bottom: 10%;
+            left: 20%;
+            animation-duration: 20s;
+        }
+
+        @keyframes move {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(150px, 80px) scale(1.1); }
+            100% { transform: translate(-50px, 150px) scale(0.9); }
+        }
+
+        /* 4. Capa de Grano (Textura) */
+        .grain-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+            opacity: 0.25; /* Controla la intensidad del grano aquí */
+            /* SVG Fractal Noise como data-uri */
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+
+        /* 5. Contenido (Logo/Texto) */
+        .logo-container {
+            position: absolute;
+            z-index: 10;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #d4e157;
+        }
+
+        .logo-container h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            letter-spacing: -2px;
+            margin-bottom: 0;
+        }
+
+        .logo-container p {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="gradient-wrapper">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+
+        <div class="grain-overlay"></div>
+
+        <div class="logo-container">
+            <h1>Quantta</h1>
+            <p>Estrategia y Sistemas</p>
+        </div>
+    </div>
+
+</body>
+</html>
