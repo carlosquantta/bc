@@ -99,11 +99,11 @@ body { background: var(--cream); color: var(--dark); font-family: 'Truculenta', 
 /* bottom info block */
 .hero-bottom {
   position: relative; z-index: 2;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
+  display: flex;
   align-items: center;
-  gap: 1.5rem;
-  width: 100%; max-width: 1400px;
+  justify-content: center;
+  gap: 2.5rem;
+  width: 100%;
   margin-top: 0.75rem;
   padding: 0.5rem 0;
 }
@@ -113,9 +113,8 @@ body { background: var(--cream); color: var(--dark); font-family: 'Truculenta', 
   display: block;
   font-family: 'Truculenta', sans-serif;
   font-size: clamp(1.8rem, 4vw, 3rem);
-  font-weight: 900;
-  color: #f9efd8;
-  text-shadow: 1px 1px 0 var(--dark);
+  font-weight: 700;
+  color: var(--dark);
   letter-spacing: -0.02em;
 }
 .date-month {
@@ -123,8 +122,7 @@ body { background: var(--cream); color: var(--dark); font-family: 'Truculenta', 
   font-family: 'Truculenta', sans-serif;
   font-size: clamp(2.5rem, 8vw, 4rem);
   font-weight: 900;
-  color: #f9efd8;
-  text-shadow: 1px 1px 0 var(--dark);
+  color: var(--dark);
   line-height: 0.88;
   letter-spacing: -0.03em;
   margin-top: -0.05em;
@@ -132,18 +130,20 @@ body { background: var(--cream); color: var(--dark); font-family: 'Truculenta', 
 
 .hero-location {
   text-align: left;
-  font-size: clamp(0.65rem, 1.4vw, 0.95rem);
-  font-weight: 800;
+  font-size: clamp(0.55rem, 1.4vw, 0.85rem);
+  font-weight: 400;
   line-height: 1.55;
   text-transform: uppercase;
-  color: #f9efd8;
-  text-shadow: 1px 1px 0 var(--dark);
+  color: var(--dark);
+  opacity: 0.7;
 }
 .hero-location .loc-main {
-  font-size: clamp(0.85rem, 2vw, 2rem);
-  display: block; margin-bottom: 0.5rem;
+  font-size: clamp(0.65rem, 1.6vw, 1rem);
+  font-weight: 600;
+  opacity: 1;
+  display: block; margin-bottom: 0.25rem;
 }
-.hero-location .loc-addr { font-weight: 600; opacity: 0.85; }
+.hero-location .loc-addr { font-weight: 400; }
 
 /* badges entrada/café: lado a lado */
 .hero-badges-img {
@@ -205,6 +205,19 @@ body { background: var(--cream); color: var(--dark); font-family: 'Truculenta', 
   .sponsor-logos img { height: auto; width: 18%; }
 }
 
+/* pantallas con altura reducida (laptops 13") */
+@media (max-height: 820px) and (min-width: 701px) {
+  .hero { padding: 1rem 2rem 1.25rem; }
+  .mascot-wrap { width: clamp(200px, 34vw, 420px); }
+  .cat-pills img { height: clamp(50px, 6.5vw, 95px); }
+  .cat-pills { margin: 0.3rem 0; }
+  .date-nums { font-size: clamp(1rem, 2.2vw, 1.8rem); }
+  .date-month { font-size: clamp(1.4rem, 3.5vw, 2.4rem); }
+  .hero-bottom { margin-top: 0.25rem; padding: 0.25rem 0; }
+  .sponsor-logos { margin-top: 0.5rem; }
+  .sponsor-logos img { height: clamp(24px, 3vw, 44px); }
+}
+
 /* WAVE */
 .wave { display: block; width: 100%; line-height: 0; }
 
@@ -215,7 +228,9 @@ body { background: var(--cream); color: var(--dark); font-family: 'Truculenta', 
 .st { font-family: 'Truculenta', sans-serif; font-size: clamp(2.4rem, 6vw, 3.8rem); line-height: 1; margin-bottom: 1.75rem; }
 
 /* ABOUT */
-.sw-about { background: var(--purple); color: white; }
+.sw-about { background: var(--purple); color: white; display: none; }
+.wave-about { display: none; }
+@media (max-width: 700px) { .sw-about { display: block; } .wave-about { display: block; } }
 .sw-about .bba { width: 280px; height: 280px; background: var(--pink); bottom: -90px; right: -50px; opacity: 0.22; }
 .ag { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center; }
 .ag .st { color: var(--gold-lt); }
@@ -427,7 +442,7 @@ footer .bf2 { width: 190px; height: 190px; background: var(--pink); bottom: -55p
 
 </section>
 
-<svg class="wave" viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+<svg class="wave wave-about" viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
 <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#8B6BB1"/>
 </svg>
 
@@ -438,9 +453,8 @@ footer .bf2 { width: 190px; height: 190px; background: var(--pink); bottom: -55p
 <div class="ag">
 <div>
 <div class="sk" style="color:rgba(255,255,255,0.45);">¿Qué es esto?</div>
-<h2 class="st">Centro Alternativo de Café de Especialidad</h2>
-<p>Base Cometa es el primer centro alternativo de café de especialidad de Mérida: tres días para descubrir, aprender y enamorarte de una cultura que va mucho más allá de una taza.</p>
-<p>Un evento libre, abierto y con café gratis para todos — impulsado por Meteorito y El Patio en La Gran Lucha, en el corazón del centro histórico de Mérida.</p>
+<h2 class="st">FESTIVAL DE CAFÉ EN EL CENTRO HISTÓRICO DE MÉRIDA/h2>
+<p>RQUITECTURA ICÓNICA ALBERGANDO 9 BARRAS DE CAFÉ, CASAS TOSTADORAS, EDUCADORES Y FIGURAS NACIONALES, PROYECTOS GASTRONÓMICOS, CANTINAS Y BARES LOCALES.</p>
 <div class="atags">
 <span class="atag">3 días excepcionales</span>
 <span class="atag">Entrada libre</span>
@@ -455,7 +469,7 @@ footer .bf2 { width: 190px; height: 190px; background: var(--pink); bottom: -55p
 </div>
 </div>
 
-<svg class="wave" viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="transform:scaleY(-1);background:#8B6BB1;">
+<svg class="wave wave-about" viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="transform:scaleY(-1);background:#8B6BB1;">
 <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#B8EAD8"/>
 </svg>
 
