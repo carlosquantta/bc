@@ -202,7 +202,7 @@ body { background: var(--cream); color: var(--dark); font-family: 'Truculenta', 
   .hero-location { font-size: clamp(0.55rem, 2.8vw, 0.8rem); font-weight: 400; color: var(--dark); text-shadow: none; opacity: 0.7; }
   .hero-location .loc-main { font-size: clamp(0.65rem, 3.2vw, 0.9rem); font-weight: 600; margin-bottom: 0.25rem; }
   .sponsor-logos { gap: 0; margin-top: 0.6rem; flex-wrap: nowrap; justify-content: space-between; width: 100%; }
-  .sponsor-logos img { height: clamp(22px, 5.5vw, 36px); width: auto; }
+  .sponsor-logos img { height: auto; width: 18%; }
 }
 
 /* pantallas con altura reducida (laptops 13") */
@@ -228,6 +228,8 @@ body { background: var(--cream); color: var(--dark); font-family: 'Truculenta', 
 .st { font-family: 'Truculenta', sans-serif; font-size: clamp(2.4rem, 6vw, 3.8rem); line-height: 1; margin-bottom: 1.75rem; }
 
 /* ABOUT */
+.wave-desktop { display: block; }
+@media (max-width: 700px) { .wave-desktop { display: none; } }
 .sw-about { background: linear-gradient(315deg, #2A1A3E 0%, #5A1A5E 45%, #F4645C 100%); color: white; display: none; }
 .wave-about { display: none; }
 @media (max-width: 700px) { .sw-about { display: block; } .wave-about { display: block; } }
@@ -242,6 +244,7 @@ body { background: var(--cream); color: var(--dark); font-family: 'Truculenta', 
 
 /* AGENDA */
 .sw-agenda { background: linear-gradient(150deg, #cbe2d3 0%, #B8EAD8 35%, #C4A8E0 75%, #ffbeff 100%); }
+@media (min-width: 701px) { .sw-agenda .si { max-width: 80%; } }
 .day-tabs { display: flex; gap: 0; margin-bottom: 2rem; flex-wrap: wrap; border-bottom: 2px solid rgba(42,26,62,0.12); }
 .dtab {
   font-family: 'Truculenta', sans-serif; font-size: 1.05rem; font-weight: 700;
@@ -249,16 +252,20 @@ body { background: var(--cream); color: var(--dark); font-family: 'Truculenta', 
   border: none; border-bottom: 3px solid transparent; margin-bottom: -2px;
   cursor: pointer; background: none; color: var(--dark);
   opacity: 0.4; letter-spacing: 0.02em; text-transform: uppercase;
-  transition: opacity 0.18s, border-color 0.18s;
+  transition: opacity 0.18s, border-color 0.18s; position: relative;
 }
-.dtab.active { opacity: 1; border-bottom-color: var(--dark); }
+.dtab.active { opacity: 1; border-bottom-color: transparent; }
+.dtab.active::after {
+  content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--purple), var(--pink), var(--coral));
+}
 .dtab:hover:not(.active) { opacity: 0.7; }
 
 .dpanel { display: none; }
 .dpanel.active { display: block; }
 .acc-list { display: flex; flex-direction: column; gap: 0.5rem; }
 
-.ai { background: rgba(255,255,255,0.3); border: none; border-bottom: 1.5px solid rgba(42,26,62,0.1); border-radius: 0; overflow: hidden; backdrop-filter: blur(4px); }
+.ai { background: rgba(255,255,255,0.3); border: 1.5px solid rgba(42,26,62,0.1); border-radius: 12px; overflow: hidden; backdrop-filter: blur(4px); }
 .atrig {
 width: 100%; background: none; border: none; cursor: pointer;
 padding: 0.9rem 1.1rem;
@@ -345,7 +352,7 @@ flex-shrink: 0;
 
 .fcard {
 background: white; border: 2.5px solid var(--dark); border-radius: 18px;
-padding: 2.25rem 1.9rem; box-shadow: 6px 6px 0 var(--dark); position: relative;
+padding: 2.25rem 1.9rem; position: relative;
 }
 .fcard::before {
 content: ''; position: absolute; top: -2px; left: 10%; right: 10%; height: 4px;
@@ -378,8 +385,20 @@ input:focus, select:focus, textarea:focus { border-color: var(--purple); box-sha
 select option { background: white; }
 textarea { resize: vertical; min-height: 78px; }
 
-.cbrow { display: flex; align-items: flex-start; gap: 0.7rem; margin-top: 0.2rem; }
-.cbrow input[type=checkbox] { width: 19px; height: 19px; flex-shrink: 0; margin-top: 2px; accent-color: var(--purple); cursor: pointer; }
+.cbrow { display: flex; align-items: center; gap: 0.7rem; margin-top: 0.2rem; }
+.cbrow input[type=checkbox] {
+  width: 20px; height: 20px; flex-shrink: 0;
+  appearance: none; -webkit-appearance: none;
+  border: 2px solid rgba(42,26,62,0.28); border-radius: 5px;
+  background: white; cursor: pointer; position: relative;
+  transition: background 0.15s, border-color 0.15s;
+}
+.cbrow input[type=checkbox]:checked { background: var(--purple); border-color: var(--purple); }
+.cbrow input[type=checkbox]:checked::after {
+  content: '✓'; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  color: white; font-size: 13px; font-weight: 900; line-height: 1;
+}
 .cbrow p { font-size: 0.78rem; color: rgba(42,26,62,0.52); line-height: 1.5; }
 .cbrow p a { color: var(--purple); font-weight: 700; text-decoration: none; }
 .cb-group { display: flex; flex-direction: column; gap: 0.45rem; margin-top: 0.3rem; }
@@ -391,11 +410,11 @@ textarea { resize: vertical; min-height: 78px; }
 display: block; width: 100%; margin-top: 1.4rem; padding: 0.9rem 1.25rem;
 background: var(--purple); color: white;
 font-family: 'Truculenta', sans-serif; font-size: 1.15rem; letter-spacing: 0.04em;
-border: 2.5px solid var(--dark); border-radius: 100px; box-shadow: 4px 4px 0 var(--dark);
-cursor: pointer; transition: transform 0.14s, box-shadow 0.14s;
+border: 2.5px solid var(--dark); border-radius: 100px;
+cursor: pointer; transition: opacity 0.14s;
 }
-.bsub:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--dark); }
-.bsub:active { transform: translate(1px,1px); box-shadow: 2px 2px 0 var(--dark); }
+.bsub:hover { opacity: 0.88; }
+.bsub:active { opacity: 0.75; }
 .bsub.bc { background: var(--coral); }
 .smsg { display: none; margin-top: 1rem; padding: 0.9rem 1.1rem; background: var(--mint-lt); border: 2px solid var(--mint); border-radius: 10px; font-weight: 700; font-size: 0.88rem; color: var(--dark); text-align: center; }
 
@@ -489,6 +508,10 @@ footer a:hover { color: var(--gold-lt); }
   </div>
 
 </section>
+
+<svg class="wave wave-desktop" viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="background:#ff5a5a;">
+<path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#cbe2d3"/>
+</svg>
 
 <svg class="wave wave-about" viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
 <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#8B6BB1"/>
