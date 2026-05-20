@@ -756,7 +756,7 @@ document.getElementById(tab.dataset.day).classList.add('active');
   
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw0qoezYPb-0Cu1kvQ0csXrmdD6HYKQejeuyitBWyfG2mt21pVIq93jCL85l_fpuLtI0g/exec";
   
-  // ENVIAR FORMULARIO DE ASISTENTES (Pestaña: participantes)
+  // ENVIAR FORMULARIO DE ASISTENTES (Pestaña: asistentes)
   document.getElementById('regForm').addEventListener('submit', function(e) {
     e.preventDefault();
     
@@ -782,7 +782,7 @@ document.getElementById(tab.dataset.day).classList.add('active');
     
     // Empaquetamos los datos en un objeto limpio
     const payload = {
-      formType: "participantes", // Esto le avisa al script que use la pestaña de asistentes
+      formType: "asistentes", // Esto le avisa al script que use la pestaña de asistentes
       nombre: nombre,
       apellido: apellido,
       email: email,
