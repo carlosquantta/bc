@@ -750,34 +750,127 @@ document.getElementById(tab.dataset.day).classList.add('active');
 });
 });
 
-// Form asistentes
-document.getElementById('regForm').addEventListener('submit', function(e) {
-e.preventDefault();
-if (!document.getElementById('nombre').value.trim() ||
-!document.getElementById('email').value.trim() ||
-!document.getElementById('dias').value ||
-!document.getElementById('acepto').checked) {
-alert('Por favor completa los campos obligatorios y acepta el aviso de privacidad.');
-return;
-}
-this.querySelectorAll('input,select,textarea,button').forEach(el => el.disabled = true);
-document.getElementById('successMsg').style.display = 'block';
-});
-
-// Form competidores
-document.getElementById('compForm').addEventListener('submit', function(e) {
-e.preventDefault();
-if (!document.getElementById('c-nombre').value.trim() ||
-!document.getElementById('c-email').value.trim() ||
-!document.getElementById('c-tel').value.trim() ||
-!document.getElementById('c-torneo').value ||
-!document.getElementById('c-acepto').checked) {
-alert('Por favor completa los campos obligatorios y acepta el reglamento.');
-return;
-}
-this.querySelectorAll('input,select,textarea,button').forEach(el => el.disabled = true);
-document.getElementById('compSuccessMsg').style.display = 'block';
-});
+  // =========================================================================
+  // COPIA Y PEGA ESTO EXACTAMENTE EN EL ESPACIO EN BLANCO:
+  // =========================================================================
+  
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw0qoezYPb-0Cu1kvQ0csXrmdD6HYKQejeuyitBWyfG2mt21pVIq93jCL85l_fpuLtI0g/exec";
+  
+  // ENVIAR FORMULARIO DE ASISTENTES (Pestaña: participantes)
+  document.getElementById('regForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Capturamos los valores de los inputs del HTML
+    const nombre = document.getElementById('nombre').value.trim();
+    const apellido = document.getElementById('apellido').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const telefono = document.getElementById('telefono').value.trim();
+    const dias = document.getElementById('dias').value;
+    const interes = document.getElementById('interes').value;
+    const acepto = document.getElementById('acepto').checked;
+    
+    // Validación idéntica a la que ya tenías
+    if (!nombre || !email || !dias || !acepto) {
+      alert('Por favor completa los campos obligatorios y acepta el aviso de privacidad.');
+      return;
+    }
+    
+    // Deshabilitamos el botón y cambiamos el texto para que el usuario sepa que está cargando
+    const submitBtn = this.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.innerText = "Reservando tu lugar...";
+    
+    // Empaquetamos los datos en un objeto limpio
+    const payload = {
+      formType: "participantes", // Esto le avisa al script que use la pestaña de asistentes
+      nombre: nombre,
+      apellido: apellido,
+      email: email,
+      telefono: telefono,
+      dias: dias,
+      interes: interes
+    };
+    
+    // Hacemos el envío hacia Google Sheets
+    fetch(SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    .then(() => {
+      // Si todo sale bien, bloqueamos el formulario y mostramos tu mensaje de éxito
+      this.querySelectorAll('input, select, textarea').forEach(el => el.disabled = true);
+      submitBtn.style.display = 'none';
+      document.getElementById('successMsg').style.display = 'block';
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert('Hubo un problema de conexión. Inténtalo de nuevo.');
+      submitBtn.disabled = false;
+      submitBtn.innerText = "¡Quiero ir a Base Cometa!";
+    });
+  });
+  
+  // ENVIAR FORMULARIO DE COMPETIDORES (Pestaña: concursantes)
+  document.getElementById('compForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Capturamos los valores de los inputs de baristas del HTML
+    const nombre = document.getElementById('c-nombre').value.trim();
+    const apellido = document.getElementById('c-apellido').value.trim();
+    const email = document.getElementById('c-email').value.trim();
+    const tel = document.getElementById('c-tel').value.trim();
+    const cafe = document.getElementById('c-cafe').value.trim() || "Independiente";
+    const torneo = document.getElementById('c-torneo').value;
+    const exp = document.getElementById('c-exp').value;
+    const notas = document.getElementById('c-notas').value.trim();
+    const acepto = document.getElementById('c-acepto').checked;
+    
+    // Validación idéntica a la tuya
+    if (!nombre || !email || !tel || !torneo || !acepto) {
+      alert('Por favor completa los campos obligatorios y acepta el reglamento.');
+      return;
+    }
+    
+    // Feedback visual en el botón de torneo
+    const submitBtn = this.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.innerText = "Inscribiendo al torneo...";
+    
+    // Empaquetamos los datos correspondientes a baristas
+    const payload = {
+      formType: "concursantes", // Esto le avisa al script que use la pestaña de competidores
+      nombre: nombre,
+      apellido: apellido,
+      email: email,
+      telefono: tel,
+      cafe: cafe,
+      torneo: torneo,
+      experiencia: exp,
+      notes: notas
+    };
+    
+    // Hacemos el envío hacia Google Sheets
+    fetch(SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    .then(() => {
+      // Si todo sale bien, bloqueamos el formulario y mostramos tu mensaje de éxito para competidores
+      this.querySelectorAll('input, select, textarea').forEach(el => el.disabled = true);
+      submitBtn.style.display = 'none';
+      document.getElementById('compSuccessMsg').style.display = 'block';
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert('Hubo un problema al procesar tu inscripción.');
+      submitBtn.disabled = false;
+      submitBtn.innerText = "Inscribirme al torneo";
+    });
+  });
 </script>
 </body>
 </html>
