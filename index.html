@@ -63,7 +63,7 @@ body { background: var(--cream); color: var(--dark); font-family: 'Truculenta', 
   display: block;
   font-weight: 900;
 }
-.hero-tagline.left  { text-align: left; color: var(--gold-lt); }
+.hero-tagline.left  { text-align: left; color: var(--dark); }
 .hero-tagline.right {
   text-align: right;
   font-size: clamp(0.6rem, 1.3vw, 6.9rem);
@@ -242,22 +242,23 @@ body { background: var(--cream); color: var(--dark); font-family: 'Truculenta', 
 
 /* AGENDA */
 .sw-agenda { background: linear-gradient(150deg, #cbe2d3 0%, #B8EAD8 35%, #C4A8E0 75%, #ffbeff 100%); }
-.day-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+.day-tabs { display: flex; gap: 0; margin-bottom: 2rem; flex-wrap: wrap; border-bottom: 2px solid rgba(42,26,62,0.12); }
 .dtab {
-font-family: 'Truculenta', sans-serif; font-size: 1rem;
-padding: 0.45rem 1.2rem; border-radius: 100px;
-border: 2.5px solid var(--dark); box-shadow: 3px 3px 0 var(--dark);
-cursor: pointer; background: white; color: var(--dark);
-transition: background 0.18s, color 0.18s, transform 0.12s;
+  font-family: 'Truculenta', sans-serif; font-size: 1.05rem; font-weight: 700;
+  padding: 0.5rem 1.4rem 0.65rem; border-radius: 0;
+  border: none; border-bottom: 3px solid transparent; margin-bottom: -2px;
+  cursor: pointer; background: none; color: var(--dark);
+  opacity: 0.4; letter-spacing: 0.02em; text-transform: uppercase;
+  transition: opacity 0.18s, border-color 0.18s;
 }
-.dtab.active { background: var(--dark); color: var(--gold-lt); }
-.dtab:hover:not(.active) { transform: translate(-1px,-1px); box-shadow: 4px 4px 0 var(--dark); }
+.dtab.active { opacity: 1; border-bottom-color: var(--dark); }
+.dtab:hover:not(.active) { opacity: 0.7; }
 
 .dpanel { display: none; }
 .dpanel.active { display: block; }
 .acc-list { display: flex; flex-direction: column; gap: 0.5rem; }
 
-.ai { background: white; border: 2px solid var(--dark); border-radius: 12px; box-shadow: 3px 3px 0 var(--dark); overflow: hidden; }
+.ai { background: rgba(255,255,255,0.3); border: none; border-bottom: 1.5px solid rgba(42,26,62,0.1); border-radius: 0; overflow: hidden; backdrop-filter: blur(4px); }
 .atrig {
 width: 100%; background: none; border: none; cursor: pointer;
 padding: 0.9rem 1.1rem;
@@ -268,21 +269,25 @@ transition: background 0.15s;
 .atrig:hover { background: rgba(0,0,0,0.025); }
 .tbadge {
 font-family: 'Truculenta', sans-serif; font-size: 0.82rem;
-background: var(--gold); color: white;
+background: #9B9B9B; color: white;
 border-radius: 8px; padding: 0.22rem 0.35rem;
-text-align: center; border: 1.5px solid var(--dark); white-space: nowrap;
+text-align: center; border: none; white-space: nowrap;
 }
-.tbadge.tp { background: var(--purple); }
-.tbadge.tc { background: var(--coral); }
-.tbadge.tm { background: var(--mint); color: var(--dark); }
-.aname { font-weight: 800; font-size: 0.92rem; color: var(--dark); line-height: 1.2; }
+.tbadge.ta { background: #F4645C; }
+.tbadge.tc { background: #7B2DA0; }
+.tbadge.tp { background: #3DB89A; }
+.tbadge.tt { background: #C8973A; }
+.tbadge.te { background: #C9B87A; color: #3a2800; }
+.aname { font-weight: 800; font-size: 0.92rem; font-family: 'Truculenta', sans-serif; color: var(--dark); line-height: 1.2; }
 .chip {
 font-size: 0.6rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
-padding: 0.18rem 0.55rem; border-radius: 100px; border: 1.5px solid var(--dark); white-space: nowrap;
+padding: 0.18rem 0.55rem; border-radius: 100px; white-space: nowrap;
 }
-.ch-t { background: var(--gold-lt); }
-.ch-c { background: var(--purple-lt); }
-.ch-a { background: var(--mint-lt); }
+.ch-a { background: rgba(244,100,92,0.18); border: 1.5px solid #F4645C; color: #b02828; }
+.ch-c { background: rgba(123,45,160,0.12); border: 1.5px solid #7B2DA0; color: #5a1a7e; }
+.ch-p { background: rgba(61,184,154,0.18); border: 1.5px solid #3DB89A; color: #1a6e58; }
+.ch-t { background: rgba(200,151,58,0.18); border: 1.5px solid #C8973A; color: #7a4a00; }
+.ch-e { background: rgba(201,184,122,0.2); border: 1.5px solid #C9B87A; color: #5a4800; }
 
 .achev {
 width: 26px; height: 26px; border: 2px solid var(--dark); border-radius: 50%;
@@ -297,10 +302,42 @@ flex-shrink: 0;
 .abody.open { grid-template-rows: 1fr; }
 .ainner { overflow: hidden; }
 .adcontent { padding: 0.7rem 1.1rem 1.1rem; border-top: 1.5px dashed rgba(0,0,0,0.08); }
-.adcontent p { font-size: 0.86rem; line-height: 1.65; color: rgba(42,26,62,0.68); }
+.adcontent p { font-family: 'Truculenta', sans-serif; font-size: 0.86rem; line-height: 1.65; color: rgba(42,26,62,0.68); }
 .adcontent p+p { margin-top: 0.5rem; }
 .ainst { display: inline-flex; align-items: center; gap: 0.35rem; margin-top: 0.55rem; font-size: 0.76rem; font-weight: 800; color: var(--purple); }
 .ainst::before { content:''; }
+
+/* ── CARDS GRID (día 29) ── */
+.day-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 1rem; }
+.dcard { background: white; border: 2px solid var(--dark); border-radius: 16px; box-shadow: 4px 4px 0 var(--dark); padding: 1rem 1.1rem; display: flex; flex-direction: column; gap: 0.4rem; }
+.dc-time { font-size: 0.68rem; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.45; }
+.dc-name { font-weight: 800; font-size: 0.95rem; line-height: 1.25; color: var(--dark); }
+.dc-inst { font-size: 0.72rem; font-weight: 600; opacity: 0.5; margin-top: auto; padding-top: 0.35rem; }
+
+/* ── TIMELINE (día 30) ── */
+.day-timeline { display: flex; flex-direction: column; position: relative; padding-left: 5.5rem; }
+.day-timeline::before { content:''; position: absolute; left: 4.6rem; top: 0.8rem; bottom: 0.8rem; width: 2px; background: var(--dark); opacity: 0.12; }
+.dtl-item { display: flex; align-items: flex-start; gap: 1rem; padding: 0.55rem 0; position: relative; }
+.dtl-time { position: absolute; left: -5.2rem; width: 4rem; text-align: right; font-size: 0.65rem; font-weight: 900; letter-spacing: 0.05em; text-transform: uppercase; opacity: 0.5; top: 0.65rem; }
+.dtl-dot { width: 13px; height: 13px; border-radius: 50%; border: 2px solid var(--dark); flex-shrink: 0; margin-top: 0.28rem; position: relative; left: -0.75rem; }
+.dtl-dot.ta { background: var(--coral); }
+.dtl-dot.tp { background: var(--purple); }
+.dtl-dot.tm { background: var(--mint); }
+.dtl-dot.tc { background: var(--coral); }
+.dtl-dot.tg { background: var(--gold); }
+.dtl-name { font-weight: 800; font-size: 0.9rem; line-height: 1.2; color: var(--dark); }
+.dtl-inst { font-size: 0.7rem; font-weight: 600; opacity: 0.5; margin-top: 0.1rem; }
+
+/* ── TABLE / PÓSTER (día 31) ── */
+.day-table { display: flex; flex-direction: column; gap: 0.3rem; }
+.dt-row { display: grid; grid-template-columns: 5.5rem 1fr; align-items: center; gap: 1rem; }
+.dt-hour { font-size: 0.65rem; font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.45; text-align: right; }
+.dt-event { background: white; border: 2px solid var(--dark); border-radius: 10px; padding: 0.5rem 0.85rem; font-weight: 800; font-size: 0.88rem; display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; }
+.dt-event.tc { border-left: 5px solid var(--coral); }
+.dt-event.tp { border-left: 5px solid var(--purple); }
+.dt-event.tm { border-left: 5px solid var(--mint); }
+.dt-event.tg { border-left: 5px solid var(--gold); }
+.dt-tag { font-size: 0.58rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.45; white-space: nowrap; }
 
 /* FORMS */
 .sw-form { background: linear-gradient(150deg, #F5EDD4 0%, #f5d8ee 50%, #f5c4b8 100%); }
@@ -345,6 +382,10 @@ textarea { resize: vertical; min-height: 78px; }
 .cbrow input[type=checkbox] { width: 19px; height: 19px; flex-shrink: 0; margin-top: 2px; accent-color: var(--purple); cursor: pointer; }
 .cbrow p { font-size: 0.78rem; color: rgba(42,26,62,0.52); line-height: 1.5; }
 .cbrow p a { color: var(--purple); font-weight: 700; text-decoration: none; }
+.cb-group { display: flex; flex-direction: column; gap: 0.45rem; margin-top: 0.3rem; }
+.cb-option { display: flex; align-items: center; gap: 0.65rem; cursor: pointer; }
+.cb-option input[type=checkbox] { width: 18px; height: 18px; flex-shrink: 0; accent-color: var(--purple); cursor: pointer; appearance: auto; }
+.cb-option span { font-family: 'Truculenta', sans-serif; font-size: 0.86rem; font-weight: 600; color: var(--dark); }
 
 .bsub {
 display: block; width: 100%; margin-top: 1.4rem; padding: 0.9rem 1.25rem;
@@ -378,8 +419,13 @@ footer .bf2 { width: 190px; height: 190px; background: var(--pink); bottom: -55p
 .mascot-col { display: none; }
 .fg { grid-template-columns: 1fr; }
 .fg .full { grid-column: 1; }
-.atrig { grid-template-columns: 46px 1fr 26px; }
-.chip { display: none; }
+.atrig { grid-template-columns: 46px 1fr auto 26px; }
+.chip { font-size: 0.5rem; padding: 0.1rem 0.38rem; border-radius: 100px; white-space: nowrap; border-width: 1px; }
+.ch-a { background: rgba(244,100,92,0.22); border-color: #F4645C; color: #b02828; }
+.ch-c { background: rgba(123,45,160,0.16); border-color: #7B2DA0; color: #5a1a7e; }
+.ch-p { background: rgba(61,184,154,0.22); border-color: #3DB89A; color: #1a6e58; }
+.ch-t { background: rgba(200,151,58,0.22); border-color: #C8973A; color: #7a4a00; }
+.ch-e { background: rgba(201,184,122,0.28); border-color: #C9B87A; color: #5a4800; }
 .fcard { padding: 1.6rem 1.1rem; }
 }
 </style>
@@ -482,273 +528,42 @@ footer .bf2 { width: 190px; height: 190px; background: var(--pink); bottom: -55p
 <!-- DÍA 29 — VIERNES -->
 <div class="dpanel active" id="d29">
 <div class="acc-list">
-<div class="ai">
-<button class="atrig" data-acc="a1">
-<span class="tbadge tm">7 AM</span>
-<span class="aname">Yoga by El Patio</span>
-<span class="chip ch-a"> Actividad</span>
-<span class="achev">▼</span>
-</button>
-<div class="abody" id="a1"><div class="ainner"><div class="adcontent">
-<p>Arranca el viernes con una sesión de yoga al aire libre para despertar cuerpo y mente antes de sumergirte en el festival.</p>
-<div class="ainst">El Patio</div>
-</div></div></div>
-</div>
-<div class="ai">
-<button class="atrig" data-acc="a2">
-<span class="tbadge">9 AM</span>
-<span class="aname">Carrusel de Café + Villa de Tostadores</span>
-<span class="chip ch-a"> Actividad</span>
-<span class="achev">▼</span>
-</button>
-<div class="abody" id="a2"><div class="ainner"><div class="adcontent">
-<p>9 barras de café, casas tostadoras, educadores y figuras nacionales en el corazón de La Gran Lucha. Prueba, pregunta y descubre productores y métodos de toda la república.</p>
-</div></div></div>
-</div>
-<div class="ai">
-<button class="atrig" data-acc="a3">
-<span class="tbadge tp">11 AM</span>
-<span class="aname">Viaje Onírico por La Marzocco</span>
-<span class="chip ch-c"> Curso</span>
-<span class="achev">▼</span>
-</button>
-<div class="abody" id="a3"><div class="ainner"><div class="adcontent">
-<p>Una experiencia inmersiva diseñada por La Marzocco: descubre el mundo del espresso a través de sus máquinas icónicas y la historia detrás de cada extracción.</p>
-<div class="ainst">La Marzocco</div>
-</div></div></div>
-</div>
-<div class="ai">
-<button class="atrig" data-acc="a4">
-<span class="tbadge tc">6 PM</span>
-<span class="aname">Torneo Rey de la Colina</span>
-<span class="chip ch-t"> Torneo</span>
-<span class="achev">▼</span>
-</button>
-<div class="abody" id="a4"><div class="ainner"><div class="adcontent">
-<p>El primer torneo de Base Cometa 2026. Formato de eliminación directa donde cada barista defiende su título hasta que quede un solo campeón en la cima.</p>
-<p>¿Quieres competir? Inscríbete en el formulario de más abajo.</p>
-</div></div></div>
-</div>
-<div class="ai">
-<button class="atrig" data-acc="a5">
-<span class="tbadge tp">7 PM</span>
-<span class="aname">La Marzocco y su Legado por el Mundo</span>
-<span class="chip ch-c"> Plática</span>
-<span class="achev">▼</span>
-</button>
-<div class="abody" id="a5"><div class="ainner"><div class="adcontent">
-<p>Charla magistral sobre la historia y el impacto global de La Marzocco: cómo una máquina italiana se convirtió en símbolo del café de especialidad en todos los continentes.</p>
-<div class="ainst">La Marzocco</div>
-</div></div></div>
-</div>
-<div class="ai">
-<button class="atrig" data-acc="a6">
-<span class="tbadge tm">8 PM</span>
-<span class="aname">Cantina Social / Networking</span>
-<span class="chip ch-a"> Actividad</span>
-<span class="achev">▼</span>
-</button>
-<div class="abody" id="a6"><div class="ainner"><div class="adcontent">
-<p>Cierra el viernes en la cantina de Base Cometa: cócteles, café y la mejor excusa para conocer a los baristas, tostadores y amantes del café que vinieron de toda la región.</p>
-</div></div></div>
-</div>
-<div class="ai">
-<button class="atrig" data-acc="a7">
-<span class="tbadge tp">9 PM</span>
-<span class="aname">Fundamentos Sensory</span>
-<span class="chip ch-c"> Curso</span>
-<span class="achev">▼</span>
-</button>
-<div class="abody" id="a7"><div class="ainner"><div class="adcontent">
-<p>Entrena tu paladar: aprende a identificar notas, acidez, cuerpo y dulzura en el café. Una introducción práctica al análisis sensorial para todos los niveles.</p>
-</div></div></div>
-</div>
+<div class="ai"><button class="atrig" data-acc="a1"><span class="tbadge ta">7 AM</span><span class="aname">Yoga by El Patio</span><span class="chip ch-a">Actividad</span><span class="achev">▼</span></button><div class="abody" id="a1"><div class="ainner"><div class="adcontent"><p>Arranca el viernes con una sesión de yoga al aire libre para despertar cuerpo y mente antes de sumergirte en el festival.</p><div class="ainst">El Patio</div></div></div></div></div>
+<div class="ai"><button class="atrig" data-acc="a2"><span class="tbadge tc">9 AM</span><span class="aname">Fundamentos Sensory</span><span class="chip ch-c">Curso</span><span class="achev">▼</span></button><div class="abody" id="a2"><div class="ainner"><div class="adcontent"><p>Entrena tu paladar: aprende a identificar notas, acidez, cuerpo y dulzura en el café. Una introducción práctica al análisis sensorial para todos los niveles.</p></div></div></div></div>
+<div class="ai"><button class="atrig" data-acc="a3"><span class="tbadge ta">9 AM</span><span class="aname">Carrusel de Café + Viaje Onírico por La Marzocco</span><span class="chip ch-a">Actividad</span><span class="achev">▼</span></button><div class="abody" id="a3"><div class="ainner"><div class="adcontent"><p>9 barras de café, casas tostadoras, educadores y figuras nacionales en el corazón de La Gran Lucha. Prueba, pregunta y descubre productores y métodos de toda la república.</p><p>En paralelo: el Viaje Onírico por La Marzocco — una experiencia inmersiva para descubrir el espresso a través de sus máquinas icónicas.</p><div class="ainst">La Marzocco</div></div></div></div></div>
+<div class="ai"><button class="atrig" data-acc="a4"><span class="tbadge tp">9 AM</span><span class="aname">El Agua Invisible en Cafeteras de Espresso</span><span class="chip ch-p">Plática</span><span class="achev">▼</span></button><div class="abody" id="a4"><div class="ainner"><div class="adcontent"><p>El agua es el ingrediente más ignorado del espresso. Aprende cómo su química transforma radicalmente la extracción y el sabor.</p></div></div></div></div>
+<div class="ai"><button class="atrig" data-acc="a5"><span class="tbadge te">9 AM–12 PM</span><span class="aname">Expo Specialty Coffee Sureste</span><span class="chip ch-e">Expo</span><span class="achev">▼</span></button><div class="abody" id="a5"><div class="ainner"><div class="adcontent"><p>Inauguración de la Expo Specialty Coffee Sureste en el Centro de Convenciones Yucatán Siglo XXI. El punto de encuentro del café de especialidad en la región.</p></div></div></div></div>
+<div class="ai"><button class="atrig" data-acc="a6"><span class="tbadge ta">9 AM–12 PM</span><span class="aname">Cantina Social / Networking</span><span class="chip ch-a">Actividad</span><span class="achev">▼</span></button><div class="abody" id="a6"><div class="ainner"><div class="adcontent"><p>El espacio social de Base Cometa abre desde la mañana: cócteles de café, buena música y la mejor excusa para conectar con baristas, tostadores y amantes del café de toda la región.</p></div></div></div></div>
 </div>
 </div>
 
 <!-- DÍA 30 — SÁBADO -->
 <div class="dpanel" id="d30">
 <div class="acc-list">
-<div class="ai">
-<button class="atrig" data-acc="b1">
-<span class="tbadge tm">7 AM</span>
-<span class="aname">Sonoro Run</span>
-<span class="chip ch-a"> Actividad</span>
-<span class="achev">▼</span>
-</button>
-<div class="abody" id="b1"><div class="ainner"><div class="adcontent">
-<p>Arranca el sábado corriendo por el centro histórico de Mérida con la mejor playlist de fondo. Una carrera ligera para despertar la energía del día.</p>
-</div></div></div>
-</div>
-<div class="ai">
-<button class="atrig" data-acc="b2">
-<span class="tbadge tm">7:30 AM</span>
-<span class="aname">Pilates Mat by Reflect</span>
-<span class="chip ch-a"> Actividad</span>
-<span class="achev">▼</span>
-</button>
-<div class="abody" id="b2"><div class="ainner"><div class="adcontent">
-<p>Sesión de Pilates Mat al aire libre para activar el cuerpo antes de la jornada más intensa del festival.</p>
-<div class="ainst">Reflect</div>
-</div></div></div>
-</div>
-<div class="ai">
-<button class="atrig" data-acc="b3">
-<span class="tbadge tp">9 AM</span>
-<span class="aname">La Gravedad del Origen</span>
-<span class="chip ch-c"> Plática</span>
-<span class="achev">▼</span>
-</button>
-<div class="abody" id="b3"><div class="ainner"><div class="adcontent">
-<p>Explora cómo el origen del grano — altitud, suelo, varietal y proceso — determina el perfil de sabor que llega a tu taza. Una profunda mirada al campo cafetero.</p>
-</div></div></div>
-</div>
-<div class="ai">
-<button class="atrig" data-acc="b4">
-<span class="tbadge tp">9 AM</span>
-<span class="aname">La Gravedad de la Hospitalidad</span>
-<span class="chip ch-c"> Plática</span>
-<span class="achev">▼</span>
-</button>
-<div class="abody" id="b4"><div class="ainner"><div class="adcontent">
-<p>¿Qué hace que una cafetería sea memorable? Una conversación sobre servicio, experiencia y la cultura de hospitalidad que eleva al café de especialidad más allá de la bebida.</p>
-</div></div></div>
-</div>
-<div class="ai">
-<button class="atrig" data-acc="b5">
-<span class="tbadge">9 AM</span>
-<span class="aname">Carrusel de Café + Villa de Tostadores</span>
-<span class="chip ch-a"> Actividad</span>
-<span class="achev">▼</span>
-</button>
-<div class="abody" id="b5"><div class="ainner"><div class="adcontent">
-<p>El espacio de exposición sigue abierto: 9 barras, casas tostadoras y proyectos gastronómicos para explorar a tu ritmo durante todo el día.</p>
-</div></div></div>
-</div>
-<div class="ai">
-<button class="atrig" data-acc="b6">
-<span class="tbadge tp">10 AM</span>
-<span class="aname">Viaje Onírico por La Marzocco</span>
-<span class="chip ch-c"> Curso</span>
-<span class="achev">▼</span>
-</button>
-<div class="abody" id="b6"><div class="ainner"><div class="adcontent">
-<p>Segunda sesión de la experiencia inmersiva de La Marzocco. Si no pudiste el viernes, esta es tu oportunidad para descubrir el universo espresso de la mano de sus expertos.</p>
-<div class="ainst">La Marzocco</div>
-</div></div></div>
-</div>
-<div class="ai">
-<button class="atrig" data-acc="b7">
-<span class="tbadge tc">AM</span>
-<span class="aname">Torneo Tueste — por Lalo Juarez</span>
-<span class="chip ch-t"> Torneo</span>
-<span class="achev">▼</span>
-</button>
-<div class="abody" id="b7"><div class="ainner"><div class="adcontent">
-<p>El torneo de tueste de Base Cometa con Lalo Juarez como anfitrión. Tostadores se miden en técnica, consistencia y perfil de taza. ¿Tienes lo que se necesita?</p>
-<div class="ainst">Lalo Juarez</div>
-</div></div></div>
-</div>
-<div class="ai">
-<button class="atrig" data-acc="b8">
-<span class="tbadge">ALL DAY</span>
-<span class="aname">Expo Specialty Coffee Sureste</span>
-<span class="chip ch-a"> Expo</span>
-<span class="achev">▼</span>
-</button>
-<div class="abody" id="b8"><div class="ainner"><div class="adcontent">
-<p>La Expo Specialty Coffee Sureste se realiza en paralelo en el Centro de Convenciones Yucatán Siglo XXI. Marcas, equipo, insumos y lo mejor del sector en un solo lugar.</p>
-<p>Ubicación: Centro de Convenciones Yucatán Siglo XXI.</p>
-</div></div></div>
-</div>
+<div class="ai"><button class="atrig" data-acc="b1"><span class="tbadge ta">7 AM</span><span class="aname">Sonoro Run</span><span class="chip ch-a">Actividad</span><span class="achev">▼</span></button><div class="abody" id="b1"><div class="ainner"><div class="adcontent"><p>Arranca el sábado corriendo por el centro histórico de Mérida con la mejor playlist de fondo. Una carrera ligera para despertar la energía del día más intenso del festival.</p></div></div></div></div>
+<div class="ai"><button class="atrig" data-acc="b2"><span class="tbadge ta">7:30 AM</span><span class="aname">Pilates Mat by Reflect</span><span class="chip ch-a">Actividad</span><span class="achev">▼</span></button><div class="abody" id="b2"><div class="ainner"><div class="adcontent"><p>Sesión de Pilates Mat al aire libre para activar el cuerpo antes de la jornada más intensa del festival.</p><div class="ainst">Reflect</div></div></div></div></div>
+<div class="ai"><button class="atrig" data-acc="b3"><span class="tbadge tp">8 AM</span><span class="aname">La Gravedad del Origen</span><span class="chip ch-p">Plática</span><span class="achev">▼</span></button><div class="abody" id="b3"><div class="ainner"><div class="adcontent"><p>Explora cómo el origen del grano — altitud, suelo, varietal y proceso — determina el perfil de sabor que llega a tu taza.</p></div></div></div></div>
+<div class="ai"><button class="atrig" data-acc="b4"><span class="tbadge tp">9 AM</span><span class="aname">La Gravedad de la Hospitalidad</span><span class="chip ch-p">Plática</span><span class="achev">▼</span></button><div class="abody" id="b4"><div class="ainner"><div class="adcontent"><p>¿Qué hace que una cafetería sea memorable? Una conversación sobre servicio, experiencia y la cultura de hospitalidad que eleva al café de especialidad.</p></div></div></div></div>
+<div class="ai"><button class="atrig" data-acc="b5"><span class="tbadge ta">9 AM</span><span class="aname">Carrusel de Café + Viaje Onírico por La Marzocco</span><span class="chip ch-a">Actividad</span><span class="achev">▼</span></button><div class="abody" id="b5"><div class="ainner"><div class="adcontent"><p>El espacio de exposición abierto todo el día: 9 barras, casas tostadoras y proyectos gastronómicos. En paralelo, el Viaje Onírico de La Marzocco.</p><div class="ainst">La Marzocco</div></div></div></div></div>
+<div class="ai"><button class="atrig" data-acc="b6"><span class="tbadge tt">10 AM–12 PM</span><span class="aname">Torneo Tueste por Lalo Juarez</span><span class="chip ch-t">Torneo</span><span class="achev">▼</span></button><div class="abody" id="b6"><div class="ainner"><div class="adcontent"><p>El torneo de tueste de Base Cometa. Tostadores se miden en técnica, consistencia y perfil de taza en una competencia de fuego.</p><div class="ainst">Lalo Juarez</div></div></div></div></div>
+<div class="ai"><button class="atrig" data-acc="b7"><span class="tbadge te">12 PM–6 PM</span><span class="aname">Expo Specialty Coffee Sureste</span><span class="chip ch-e">Expo</span><span class="achev">▼</span></button><div class="abody" id="b7"><div class="ainner"><div class="adcontent"><p>El día principal de la Expo Specialty Coffee Sureste en el Centro de Convenciones Yucatán Siglo XXI.</p></div></div></div></div>
+<div class="ai"><button class="atrig" data-acc="b8"><span class="tbadge tt">6 PM</span><span class="aname">Torneo Rey de la Colina</span><span class="chip ch-t">Torneo</span><span class="achev">▼</span></button><div class="abody" id="b8"><div class="ainner"><div class="adcontent"><p>El torneo más esperado de Base Cometa 2026. Eliminación directa: cada barista defiende su título hasta que quede un solo campeón en la cima. ¿Quieres competir? Inscríbete abajo.</p></div></div></div></div>
+<div class="ai"><button class="atrig" data-acc="b9"><span class="tbadge tp">7 PM</span><span class="aname">La Marzocco y su Legado por el Mundo</span><span class="chip ch-p">Plática</span><span class="achev">▼</span></button><div class="abody" id="b9"><div class="ainner"><div class="adcontent"><p>Charla magistral sobre la historia y el impacto global de La Marzocco: cómo una máquina italiana se convirtió en símbolo del café de especialidad en todos los continentes.</p><div class="ainst">La Marzocco</div></div></div></div></div>
+<div class="ai"><button class="atrig" data-acc="b10"><span class="tbadge ta">8 PM–12 PM</span><span class="aname">Cantina Social / Networking</span><span class="chip ch-a">Actividad</span><span class="achev">▼</span></button><div class="abody" id="b10"><div class="ainner"><div class="adcontent"><p>La noche más larga de Base Cometa. Cierra el sábado en la cantina con cócteles, café y la comunidad que construiste durante el día.</p></div></div></div></div>
 </div>
 </div>
 
 <!-- DÍA 31 — DOMINGO -->
 <div class="dpanel" id="d31">
 <div class="acc-list">
-<div class="ai">
-<button class="atrig" data-acc="c1">
-<span class="tbadge tm">7:30 AM</span>
-<span class="aname">Pilates Mat by Eco</span>
-<span class="chip ch-a"> Actividad</span>
-<span class="achev">▼</span>
-</button>
-<div class="abody" id="c1"><div class="ainner"><div class="adcontent">
-<p>Cierra el fin de semana con una sesión de Pilates Mat para despedir Base Cometa con energía y bienestar.</p>
-<div class="ainst">Eco</div>
-</div></div></div>
-</div>
-<div class="ai">
-<button class="atrig" data-acc="c2">
-<span class="tbadge tp">9 AM</span>
-<span class="aname">Barismo de Competencia: Diseñar Cafeterías que la Gente Recuerde</span>
-<span class="chip ch-c"> Plática</span>
-<span class="achev">▼</span>
-</button>
-<div class="abody" id="c2"><div class="ainner"><div class="adcontent">
-<p>Una charla sobre cómo construir espacios de café que se queden en la memoria: diseño, identidad, operación y la magia intangible que hace que la gente vuelva.</p>
-<div class="ainst">Cris y Perrito</div>
-</div></div></div>
-</div>
-<div class="ai">
-<button class="atrig" data-acc="c3">
-<span class="tbadge">9 AM</span>
-<span class="aname">Carrusel de Café + Villa de Tostadores</span>
-<span class="chip ch-a"> Actividad</span>
-<span class="achev">▼</span>
-</button>
-<div class="abody" id="c3"><div class="ainner"><div class="adcontent">
-<p>Último día para recorrer las 9 barras, las casas tostadoras y los proyectos gastronómicos. Aprovecha para hacer las compras y despedirte de tus baristas favoritos.</p>
-</div></div></div>
-</div>
-<div class="ai">
-<button class="atrig" data-acc="c4">
-<span class="tbadge tp">10 AM</span>
-<span class="aname">Viaje Onírico por La Marzocco</span>
-<span class="chip ch-c"> Curso</span>
-<span class="achev">▼</span>
-</button>
-<div class="abody" id="c4"><div class="ainner"><div class="adcontent">
-<p>Última sesión del Viaje Onírico para cerrar el ciclo de experiencias espresso de La Marzocco en Base Cometa 2026.</p>
-<div class="ainst">La Marzocco</div>
-</div></div></div>
-</div>
-<div class="ai">
-<button class="atrig" data-acc="c5">
-<span class="tbadge tp">6 PM</span>
-<span class="aname">El Agua Invisible en Cafeteras de Espresso</span>
-<span class="chip ch-c"> Plática</span>
-<span class="achev">▼</span>
-</button>
-<div class="abody" id="c5"><div class="ainner"><div class="adcontent">
-<p>El agua es el ingrediente más ignorado del espresso. En esta plática se explora cómo la química del agua transforma radicalmente la extracción, el sabor y la vida útil de tu máquina.</p>
-</div></div></div>
-</div>
-<div class="ai">
-<button class="atrig" data-acc="c6">
-<span class="tbadge tm">7 PM</span>
-<span class="aname">Cantina Social / Networking</span>
-<span class="chip ch-a"> Actividad</span>
-<span class="achev">▼</span>
-</button>
-<div class="abody" id="c6"><div class="ainner"><div class="adcontent">
-<p>El cierre definitivo de Base Cometa 2026. Brinda con la comunidad que construiste estos tres días y celebra el fin de semana más cafetero del sureste.</p>
-</div></div></div>
-</div>
-<div class="ai">
-<button class="atrig" data-acc="c7">
-<span class="tbadge">ALL DAY</span>
-<span class="aname">Expo Specialty Coffee Sureste</span>
-<span class="chip ch-a"> Expo</span>
-<span class="achev">▼</span>
-</button>
-<div class="abody" id="c7"><div class="ainner"><div class="adcontent">
-<p>Último día de la Expo Specialty Coffee Sureste en el Centro de Convenciones Yucatán Siglo XXI. Cierra el circuito completo del festival.</p>
-<p>Ubicación: Centro de Convenciones Yucatán Siglo XXI.</p>
-</div></div></div>
+<div class="ai"><button class="atrig" data-acc="c1"><span class="tbadge ta">7:30 AM</span><span class="aname">Pilates Mat by Eco</span><span class="chip ch-a">Actividad</span><span class="achev">▼</span></button><div class="abody" id="c1"><div class="ainner"><div class="adcontent"><p>Sesión de Pilates Mat para arrancar el último día del festival con energía y calma.</p><div class="ainst">Eco</div></div></div></div></div>
+<div class="ai"><button class="atrig" data-acc="c2"><span class="tbadge tt">8 AM</span><span class="aname">Barismo de Competencia</span><span class="chip ch-t">Torneo</span><span class="achev">▼</span></button><div class="abody" id="c2"><div class="ainner"><div class="adcontent"><p>La competencia de barismo de Base Cometa 2026. Baristas se enfrentan en técnica, creatividad y presentación para definir al mejor de la región.</p><div class="ainst">Cris y Perrito</div></div></div></div></div>
+<div class="ai"><button class="atrig" data-acc="c3"><span class="tbadge tp">9 AM</span><span class="aname">Diseñar Cafeterías que la Gente Recuerde</span><span class="chip ch-p">Plática</span><span class="achev">▼</span></button><div class="abody" id="c3"><div class="ainner"><div class="adcontent"><p>Una charla sobre cómo construir espacios de café que se queden en la memoria: diseño, identidad, operación y la magia intangible que hace que la gente vuelva.</p></div></div></div></div>
+<div class="ai"><button class="atrig" data-acc="c4"><span class="tbadge ta">9 AM</span><span class="aname">Carrusel de Café + Viaje Onírico por La Marzocco</span><span class="chip ch-a">Actividad</span><span class="achev">▼</span></button><div class="abody" id="c4"><div class="ainner"><div class="adcontent"><p>Último día para recorrer las 9 barras y las casas tostadoras. Aprovecha para hacer tus compras y despedirte de tus baristas favoritos. El Viaje Onírico de La Marzocco cierra su ciclo.</p><div class="ainst">La Marzocco</div></div></div></div></div>
+<div class="ai"><button class="atrig" data-acc="c5"><span class="tbadge te">12 PM–6 PM</span><span class="aname">Expo Specialty Coffee Sureste</span><span class="chip ch-e">Expo</span><span class="achev">▼</span></button><div class="abody" id="c5"><div class="ainner"><div class="adcontent"><p>Último día de la Expo Specialty Coffee Sureste en el Centro de Convenciones Yucatán Siglo XXI.</p></div></div></div></div>
 </div>
 </div>
+
 </div>
 
 </div>
@@ -775,25 +590,22 @@ footer .bf2 { width: 190px; height: 190px; background: var(--pink); bottom: -55p
 <div><label for="email">Correo *</label><input type="email" id="email" placeholder="correo@ejemplo.com" required></div>
 <div><label for="telefono">Teléfono</label><input type="tel" id="telefono" placeholder="+52 999 000 0000"></div>
 <div class="full">
-<label for="dias">¿Qué días vienes? *</label>
-<select id="dias" required>
-<option value="" disabled selected>Selecciona</option>
-<option>Jueves 29 de Mayo</option>
-<option>Viernes 30 de Mayo</option>
-<option>Sábado 31 de Mayo</option>
-<option>Los tres días </option>
-</select>
+<label>¿Qué días vienes? *</label>
+<div class="cb-group">
+<label class="cb-option"><input type="checkbox" name="dias" value="Viernes 29 Mayo"><span>Viernes 29 de Mayo</span></label>
+<label class="cb-option"><input type="checkbox" name="dias" value="Sábado 30 Mayo"><span>Sábado 30 de Mayo</span></label>
+<label class="cb-option"><input type="checkbox" name="dias" value="Domingo 31 Mayo"><span>Domingo 31 de Mayo</span></label>
+</div>
 </div>
 <div class="full">
-<label for="interes">¿Qué te interesa más?</label>
-<select id="interes">
-<option value="" disabled selected>Selecciona una opción</option>
-<option>Los cursos y pláticas</option>
-<option>Los torneos (Rey de la Colina, Tueste, Barismo)</option>
-<option>Las actividades (Yoga, Runs, Pilates)</option>
-<option>Todo por igual</option>
-<option>Principalmente el café gratis </option>
-</select>
+<label>¿Qué te interesa? (puedes elegir varios)</label>
+<div class="cb-group">
+<label class="cb-option"><input type="checkbox" name="interes" value="Cursos"><span>Cursos</span></label>
+<label class="cb-option"><input type="checkbox" name="interes" value="Pláticas"><span>Pláticas</span></label>
+<label class="cb-option"><input type="checkbox" name="interes" value="Torneos"><span>Torneos</span></label>
+<label class="cb-option"><input type="checkbox" name="interes" value="Actividades"><span>Actividades (Yoga, Run, Pilates)</span></label>
+<label class="cb-option"><input type="checkbox" name="interes" value="Expo"><span>Expo Specialty Coffee</span></label>
+</div>
 </div>
 <div class="full">
 <div class="cbrow">
@@ -831,13 +643,12 @@ footer .bf2 { width: 190px; height: 190px; background: var(--pink); bottom: -55p
 <div><label for="c-tel">Teléfono *</label><input type="tel" id="c-tel" placeholder="+52 999 000 0000" required></div>
 <div class="full"><label for="c-cafe">Cafetería o proyecto</label><input type="text" id="c-cafe" placeholder="Nombre del lugar (o 'Independiente')"></div>
 <div class="full">
-<label for="c-torneo">Torneo *</label>
-<select id="c-torneo" required>
-<option value="" disabled selected>Selecciona tu categoría</option>
-<option value="colina">Rey de la Colina — Viernes 29 de Mayo · 6 PM</option>
-<option value="tueste">Torneo Tueste por Lalo Juarez — Sábado 30 de Mayo</option>
-<option value="barismo">Barismo de Competencia — Domingo 31 de Mayo · 9 AM</option>
-</select>
+<label>Torneo * (puedes inscribirte a más de uno)</label>
+<div class="cb-group">
+<label class="cb-option"><input type="checkbox" name="c-torneo" value="colina"><span>Rey de la Colina — Sáb 30 Mayo · 6 PM</span></label>
+<label class="cb-option"><input type="checkbox" name="c-torneo" value="tueste"><span>Torneo Tueste por Lalo Juarez — Sáb 30 Mayo · 10 AM</span></label>
+<label class="cb-option"><input type="checkbox" name="c-torneo" value="barismo"><span>Barismo de Competencia — Dom 31 Mayo · 8 AM</span></label>
+</div>
 </div>
 <div class="full">
 <label for="c-exp">Años de experiencia</label>
@@ -936,8 +747,8 @@ document.getElementById(tab.dataset.day).classList.add('active');
     const apellido = document.getElementById('apellido').value.trim();
     const email = document.getElementById('email').value.trim();
     const telefono = document.getElementById('telefono').value.trim();
-    const dias = document.getElementById('dias').value;
-    const interes = document.getElementById('interes').value;
+    const dias = Array.from(document.querySelectorAll('input[name="dias"]:checked')).map(cb => cb.value).join(', ');
+    const interes = Array.from(document.querySelectorAll('input[name="interes"]:checked')).map(cb => cb.value).join(', ');
     const acepto = document.getElementById('acepto').checked;
     
     // Validación idéntica a la que ya tenías
@@ -993,7 +804,7 @@ document.getElementById(tab.dataset.day).classList.add('active');
     const email = document.getElementById('c-email').value.trim();
     const tel = document.getElementById('c-tel').value.trim();
     const cafe = document.getElementById('c-cafe').value.trim() || "Independiente";
-    const torneo = document.getElementById('c-torneo').value;
+    const torneo = Array.from(document.querySelectorAll('input[name="c-torneo"]:checked')).map(cb => cb.value).join(', ');
     const exp = document.getElementById('c-exp').value;
     const notas = document.getElementById('c-notas').value.trim();
     const acepto = document.getElementById('c-acepto').checked;
