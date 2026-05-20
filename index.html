@@ -245,6 +245,15 @@ body { background: var(--cream); color: var(--dark); font-family: 'Truculenta', 
 /* AGENDA */
 .sw-agenda { background: linear-gradient(150deg, #cbe2d3 0%, #B8EAD8 35%, #C4A8E0 75%, #ffbeff 100%); }
 @media (min-width: 701px) { .sw-agenda .si { max-width: 80%; } }
+@keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-14px);} }
+.agenda-layout { display: grid; grid-template-columns: 240px 1fr; gap: 3rem; align-items: start; }
+.agenda-mascot { display: flex; justify-content: center; position: sticky; top: 2rem; }
+.agenda-mascot img { width: 100%; max-width: 264px; height: auto; filter: drop-shadow(0 8px 24px rgba(0,0,0,0.15)); animation: float 3.5s ease-in-out infinite; }
+@media (max-width: 700px) {
+  .agenda-layout { grid-template-columns: 1fr; gap: 0; }
+  .agenda-mascot { margin-bottom: 1.25rem; }
+  .agenda-mascot img { max-width: 168px; }
+}
 .day-tabs { display: flex; gap: 0; margin-bottom: 2rem; flex-wrap: wrap; border-bottom: 2px solid rgba(42,26,62,0.12); }
 .dtab {
   font-family: 'Truculenta', sans-serif; font-size: 1.05rem; font-weight: 700;
@@ -419,7 +428,7 @@ cursor: pointer; transition: opacity 0.14s;
 .smsg { display: none; margin-top: 1rem; padding: 0.9rem 1.1rem; background: var(--mint-lt); border: 2px solid var(--mint); border-radius: 10px; font-weight: 700; font-size: 0.88rem; color: var(--dark); text-align: center; }
 
 /* FOOTER */
-footer { background: linear-gradient(160deg, #2A1A3E 0%, #3A1A5E 50%, #2A1A3E 100%); color: white; text-align: center; padding: 3rem 1.5rem 2rem; position: relative; overflow: hidden; }
+footer { background: linear-gradient(160deg, #1A0A2E 0%, #3A1A5E 40%, #5A1A7E 70%, #1A0A2E 100%); color: white; text-align: center; padding: 3rem 1.5rem 2rem; position: relative; overflow: hidden; }
 footer .bf1 { width: 240px; height: 240px; background: var(--purple); top: -80px; left: -60px; opacity: 0.3; }
 footer .bf2 { width: 190px; height: 190px; background: var(--pink); bottom: -55px; right: -40px; opacity: 0.2; }
 footer a { color: var(--pink); text-decoration: underline; font-weight: 700; }
@@ -541,6 +550,11 @@ footer a:hover { color: var(--gold-lt); }
 <!-- ══ AGENDA ══ -->
 <div class="sw sw-agenda">
 <div class="si">
+<div class="agenda-layout">
+<div class="agenda-mascot">
+<img src="res/meteorin.webp" alt="Meteorín">
+</div>
+<div class="agenda-content">
 <div class="sk">Programa completo</div>
 <h2 class="st">Agenda </h2>
 
@@ -586,6 +600,8 @@ footer a:hover { color: var(--gold-lt); }
 <div class="ai"><button class="atrig" data-acc="c3"><span class="tbadge tp">9 AM</span><span class="aname">Diseñar Cafeterías que la Gente Recuerde</span><span class="chip ch-p">Plática</span><span class="achev">▼</span></button><div class="abody" id="c3"><div class="ainner"><div class="adcontent"><p>Una charla sobre cómo construir espacios de café que se queden en la memoria: diseño, identidad, operación y la magia intangible que hace que la gente vuelva.</p></div></div></div></div>
 <div class="ai"><button class="atrig" data-acc="c4"><span class="tbadge ta">8 AM-12</span><span class="aname">Carrusel de Café + Villa de Tostadores + Viaje Onírico por La Marzocco</span><span class="chip ch-a">Actividad</span><span class="achev">▼</span></button><div class="abody" id="c4"><div class="ainner"><div class="adcontent"><p>Último día para recorrer las 9 barras y las casas tostadoras. Aprovecha para hacer tus compras y despedirte de tus baristas favoritos. El Viaje Onírico de La Marzocco cierra su ciclo.</p><div class="ainst">La Marzocco</div></div></div></div></div>
 <div class="ai"><button class="atrig" data-acc="c5"><span class="tbadge te">12 PM–6</span><span class="aname">Expo Specialty Coffee Sureste</span><span class="chip ch-e">Expo</span><span class="achev">▼</span></button><div class="abody" id="c5"><div class="ainner"><div class="adcontent"><p>Último día de la Expo Specialty Coffee Sureste en el Centro de Convenciones Yucatán Siglo XXI.</p></div></div></div></div>
+</div>
+</div>
 </div>
 </div>
 
