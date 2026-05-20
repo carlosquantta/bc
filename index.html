@@ -178,8 +178,9 @@ body { background: var(--cream); color: var(--dark); font-family: 'Truculenta', 
   margin-top: 1.25rem;
 }
 .sponsor-logos img {
-  height: clamp(28px, 4vw, 48px);
+  height: auto;
   width: auto;
+  max-height: 100%;
   filter: brightness(0) invert(1);
   opacity: 0.75;
   transition: opacity 0.2s;
@@ -197,7 +198,6 @@ body { background: var(--cream); color: var(--dark); font-family: 'Truculenta', 
   .hero-bottom { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 0.6rem; text-align: left; width: 100%; padding: 0.5rem 0; margin-top: 0.25rem; }
   .hero-badges-img { grid-column: 1/-1; justify-content: center; }
   .sponsor-logos { gap: 0.75rem; margin-top: 0.6rem; }
-  .sponsor-logos img { height: 22px; }
 }
 
 /* WAVE */
@@ -865,11 +865,11 @@ C. 49 466-X 52, Centro, 97000 Mérida, Yuc.<br><br>
 <div class="fhandle">@base.cometa</div>
 <div class="fby" style="margin-bottom:0.5rem;">Propulsado por</div>
 <div style="display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap;position:relative;z-index:1;margin-top:0.5rem;">
-  <img src="res/logos/meteorito.webp" alt="Meteorito" style="height:32px;width:auto;filter:brightness(0) invert(1);opacity:0.6;">
-  <img src="res/logos/elpatio.webp" alt="El Patio" style="height:32px;width:auto;filter:brightness(0) invert(1);opacity:0.6;">
-  <img src="res/logos/lamarzocco.webp" alt="La Marzocco" style="height:32px;width:auto;filter:brightness(0) invert(1);opacity:0.6;">
-  <img src="res/logos/cafefrio.webp" alt="Café Frío" style="height:32px;width:auto;filter:brightness(0) invert(1);opacity:0.6;">
-  <img src="res/logos/oatly.png" alt="Oatly" style="height:32px;width:auto;filter:brightness(0) invert(1);opacity:0.6;">
+  <img src="res/logos/meteorito.webp" alt="Meteorito" style="height:auto;width:auto;filter:brightness(0) invert(1);opacity:0.6;">
+  <img src="res/logos/elpatio.webp" alt="El Patio" style="height:auto;width:auto;filter:brightness(0) invert(1);opacity:0.6;">
+  <img src="res/logos/lamarzocco.webp" alt="La Marzocco" style="height:auto;width:auto;filter:brightness(0) invert(1);opacity:0.6;">
+  <img src="res/logos/cafefrio.webp" alt="Café Frío" style="height:auto;width:auto;filter:brightness(0) invert(1);opacity:0.6;">
+  <img src="res/logos/oatly.png" alt="Oatly" style="height:auto;width:auto;filter:brightness(0) invert(1);opacity:0.6;">
 </div>
 </footer>
 
