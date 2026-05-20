@@ -164,6 +164,23 @@ body { background: var(--cream); color: var(--dark); font-family: 'Truculenta', 
 
 .cp { display: none; }
 
+/* logos patrocinadores */
+.sponsor-logos {
+  position: relative; z-index: 2;
+  display: flex; align-items: center; justify-content: center;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  flex-wrap: wrap;
+  margin-top: 1.25rem;
+}
+.sponsor-logos img {
+  height: clamp(28px, 4vw, 48px);
+  width: auto;
+  filter: brightness(0) invert(1);
+  opacity: 0.75;
+  transition: opacity 0.2s;
+}
+.sponsor-logos img:hover { opacity: 1; }
+
 /* responsive */
 @media (max-width: 700px) {
   .hero { padding: 1.5rem 1rem 2rem; }
@@ -353,13 +370,13 @@ footer .bf2 { width: 190px; height: 190px; background: var(--pink); bottom: -55p
   <!-- fila top: tagline izquierda · mascota · tagline derecha -->
   <div class="hero-top">
     <div class="hero-tagline left">
-      ARQUITECTURA ICÓNICA ALBERGANDO 9 BARRAS DE CAFÉ, 4 CASAS TOSTADORAS, EDUCADORES Y FIGURAS NACIONALES, PROYECTOS GASTRONÓMICOS, CANTINAS Y BARES
+      FESTIVAL DE CAFÉ EN EL CENTRO HISTÓRICO DE MÉRIDA.
     </div>
     <div class="mascot-wrap">
       <img src="res/logo_bc_mascota.webp" alt="Base Cometa Mérida">
     </div>
     <div class="hero-tagline right">
-      <strong>3 días excepcionales</strong>para descubrir una cultura
+      ARQUITECTURA ICÓNICA ALBERGANDO 9 BARRAS DE CAFÉ, CASAS TOSTADORAS, EDUCADORES Y FIGURAS NACIONALES, PROYECTOS GASTRONÓMICOS, CANTINAS Y BARES LOCALES.
     </div>
   </div>
 
@@ -386,7 +403,13 @@ footer .bf2 { width: 190px; height: 190px; background: var(--pink); bottom: -55p
     </div>
   </div>
 
-  <div class="badge-bottom">Un evento propulsado por Meteorito y El Patio</div>
+  <div class="sponsor-logos">
+    <img src="res/logos/meteorito.webp" alt="Meteorito">
+    <img src="res/logos/elpatio.webp" alt="El Patio">
+    <img src="res/logos/lamarzocco.webp" alt="La Marzocco">
+    <img src="res/logos/cafefrio.webp" alt="Café Frío">
+    <img src="res/logos/oatly.png" alt="Oatly">
+  </div>
 
 </section>
 
@@ -831,7 +854,14 @@ C. 49 466-X 52, Centro, 97000 Mérida, Yuc.<br><br>
 ️ Entrada gratuita &nbsp;·&nbsp; Café gratis
 </div>
 <div class="fhandle">@base.cometa</div>
-<div class="fby">Un evento propulsado por Meteorito y El Patio</div>
+<div class="fby" style="margin-bottom:0.5rem;">Propulsado por</div>
+<div style="display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap;position:relative;z-index:1;margin-top:0.5rem;">
+  <img src="res/logos/meteorito.webp" alt="Meteorito" style="height:32px;width:auto;filter:brightness(0) invert(1);opacity:0.6;">
+  <img src="res/logos/elpatio.webp" alt="El Patio" style="height:32px;width:auto;filter:brightness(0) invert(1);opacity:0.6;">
+  <img src="res/logos/lamarzocco.webp" alt="La Marzocco" style="height:32px;width:auto;filter:brightness(0) invert(1);opacity:0.6;">
+  <img src="res/logos/cafefrio.webp" alt="Café Frío" style="height:32px;width:auto;filter:brightness(0) invert(1);opacity:0.6;">
+  <img src="res/logos/oatly.png" alt="Oatly" style="height:32px;width:auto;filter:brightness(0) invert(1);opacity:0.6;">
+</div>
 </footer>
 
 <script>
