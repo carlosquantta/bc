@@ -428,17 +428,34 @@ cursor: pointer; transition: opacity 0.14s;
 .smsg { display: none; margin-top: 1rem; padding: 0.9rem 1.1rem; background: var(--mint-lt); border: 2px solid var(--mint); border-radius: 10px; font-weight: 700; font-size: 0.88rem; color: var(--dark); text-align: center; }
 
 /* FOOTER */
-footer { background: linear-gradient(160deg, #1A0A2E 0%, #3A1A5E 40%, #5A1A7E 70%, #1A0A2E 100%); color: white; text-align: center; padding: 3rem 1.5rem 2rem; position: relative; overflow: hidden; }
-footer .bf1 { width: 240px; height: 240px; background: var(--purple); top: -80px; left: -60px; opacity: 0.3; }
-footer .bf2 { width: 190px; height: 190px; background: var(--pink); bottom: -55px; right: -40px; opacity: 0.2; }
+footer { background: linear-gradient(160deg, #1A0A2E 0%, #3A1A5E 40%, #5A1A7E 70%, #1A0A2E 100%); color: white; padding: 3rem 2.5rem 2rem; position: relative; overflow: hidden; }
 footer a { color: var(--pink); text-decoration: underline; font-weight: 700; }
 footer a:hover { color: var(--gold-lt); }
-.flogo { font-family: 'Lilita One', cursive; font-size: 3rem; color: var(--gold-lt); -webkit-text-stroke: 2px var(--gold); text-shadow: 3px 3px 0 rgba(0,0,0,0.25); line-height: 1; position: relative; z-index: 1; }
-.fsub2 { font-family: 'Truculenta', sans-serif; font-size: 1rem; letter-spacing: 0.3em; color: rgba(255,255,255,0.4); margin-top: 0.25rem; position: relative; z-index: 1; }
-.finfo { margin-top: 1.5rem; font-size: 1rem; line-height: 2; color: rgba(255,255,255,0.65); position: relative; z-index: 1; }
+.finfo { font-size: 1rem; line-height: 2; color: rgba(255,255,255,0.65); }
 .finfo strong { color: var(--gold-lt); font-size: 1.1rem; }
-.fhandle { margin-top: 1.2rem; font-family: 'Truculenta', sans-serif; font-size: 1.6rem; color: var(--pink); position: relative; z-index: 1; }
-.fby { margin-top: 1.5rem; font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.3); position: relative; z-index: 1; }
+.footer-inner { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 2.5rem; }
+.footer-main { display: flex; justify-content: center; align-items: flex-end; gap: 3rem; }
+.footer-left { display: flex; flex-direction: row; align-items: center; gap: 1.5rem; }
+.footer-logo-img { width: clamp(140px, 18vw, 230px); height: auto; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.35)); }
+.footer-right { display: flex; align-items: flex-end; gap: 0.5rem; flex-shrink: 0; }
+.footer-meteorin { height: clamp(120px, 15vw, 180px); width: auto; animation: float 3.5s ease-in-out infinite; }
+.footer-speech-wrap { position: relative; display: inline-block; }
+.footer-speech-wrap img { width: clamp(160px, 16vw, 220px); height: auto; display: block; }
+.footer-speech-text { position: absolute; top: 53%; left: 56%; transform: translate(-50%, -50%); text-align: center; width: 52%; }
+@media (min-width: 701px) { .footer-speech-text { left: calc(56% - 15px); } }
+.footer-speech-text p { font-size: 0.82rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.55; color: var(--dark); margin-bottom: 0.25rem; }
+.footer-speech-text a { font-size: clamp(1.1rem, 1.5vw, 1.45rem); font-weight: 800; color: var(--pink) !important; text-decoration: none !important; }
+.footer-sponsors { display: flex; align-items: center; justify-content: center; gap: clamp(1rem, 3vw, 2.5rem); flex-wrap: wrap; padding-top: 1.5rem; }
+.footer-sponsors img { height: auto; width: auto; max-height: 100%; filter: brightness(0) invert(1); opacity: 0.65; transition: opacity 0.2s; }
+.footer-sponsors img:hover { opacity: 1; }
+@media (max-width: 700px) {
+  footer { padding: 2.5rem 1.5rem 1.5rem; }
+  .footer-main { flex-direction: column; align-items: center; gap: 2rem; }
+  .footer-left { align-items: center; text-align: center; }
+  .footer-right { flex-direction: row; align-items: flex-end; gap: 0.5rem; }
+  .footer-speech-wrap img { width: clamp(150px, 42vw, 220px); }
+  .footer-sponsors img { height: clamp(22px, 5.5vw, 32px); width: auto; max-width: 20%; }
+}
 
 /* ANIM */
 @keyframes popIn { from{opacity:0;transform:scale(0.86) translateY(10px);} to{opacity:1;transform:scale(1) translateY(0);} }
@@ -715,32 +732,52 @@ footer a:hover { color: var(--gold-lt); }
 </svg>
 
 <!-- ══ FOOTER ══ -->
-<footer>
-<div style="position:absolute;inset:-15%;z-index:0;display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:0.12;">
-  <svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 792" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;fill:white;">
-    <path fill-rule="evenodd" d="m523.43 456.46c0 0-61.87-12.82-64.27 8.03-2.39 20.79 31.6 62.29 31.6 62.29 0 0-47.67-25.32-60.76-13.33-12.18 11.15 10.89 45.65 10.89 45.65-31.2-22.45 2.84 43.53 4.03 45.72 12.36 22.74 33.42 47.49 33.42 47.49 0 0-60.89-64.53-79.45-63.5-38.42 2.13-11.75 75.46-11.75 75.46 0 0-15.01-63.42-40.94-58.08-27.33 5.64-26.12 66.84-26.12 66.84 0 0-3.97-55.76-26.82-36.45-12.07 10.2-30.93 61.7-30.93 61.7 0 0-4.59-94.19-29.6-55.42-11.69 18.13-58.99 74.14-58.99 74.14 0 0 23.31-91.41 23.05-111.32-0.1-7.88-0.35-38.21-10.36-41.97-14.46-5.44-106.35 48.51-106.35 48.51 0 0 76.1-49.82 87.32-96.99 9.66-40.65-83.09 5.59-83.09 5.59 0 0 78.33-45.5 72.06-68.69-7.41-27.36-97.6-24.42-97.6-24.42 0 0 88.19-28.07 84.37-46.97-4.28-21.22-128.14-35.71-128.14-35.71 0 0 49.88-12.69 73.44-18.04 18.51-4.21 50.97-10.28 62.25-26.34 14.87-21.18-42.93-56.19-42.93-56.19 0 0 54.55 26.41 61.92 11.82 6-11.88-9.22-36.79-14.54-46.42-10.1-18.29-36.35-50.8-36.35-50.8 0 0 50.29 37.34 64.01 29.76 17.67-9.76-9.96-62.89-9.96-62.89 0 0 22.88 26.85 36.57 36.75 14.83 10.73 24.91 19.13 36.2 1.2 17.45-27.72 19.72-88.88 19.72-88.88 0 0 6.88 33.05 14.77 49.14 7.42 15.14 26.14 46.71 49.29 42.2 20.47-3.99 37.36-34.1 48.7-47.93 10.7-13.05 28.78-41.11 28.78-41.11 0 0-35.96 62.4-13.04 85.67 16.78 17.03 84.6-36.9 84.6-36.9 0 0-82.68 62.76-41.9 84.68 35.34 19 112.02-17.77 112.02-17.77 0 0-101.64 49.63-84.89 102.58 11.36 35.92 116.87 24.88 116.87 24.88 0 0-69.88 11.11-86.26 30.82-23.49 28.26 44.79 26.28 44.79 26.28 0 0-101.88-2.14-77.26 25.94 12.25 13.98 83.46 16.16 83.46 16.16 0 0-49.43-1.41-73.99 2.37-1.73 0.27-13.11 1.12-14.47 3.08-5.31 7.66 6.49 11.41 12.9 14.35 14.4 6.61 53.73 17.02 53.73 17.02z"/>
-  </svg>
-</div>
-<div style="position:relative;z-index:1;">
-<img src="res/logo_bc.webp"
-alt="Base Cometa"
-style="width:clamp(180px,40vw,280px); height:auto; display:block; margin:0 auto; filter:drop-shadow(0 4px 12px rgba(0,0,0,0.35));">
-</div>
-<div class="finfo">
-  <strong>Mayo 29, 30 y 31 de 2026</strong><br>
-  <a href="https://maps.app.goo.gl/uiHAgCitXuEqTTwZ7">Esquina La Gran Lucha</a><br>
-  49 por 52, Centro, Mérida, Yucatán
-</div>
-<a href="https://www.instagram.com/base.cometa/">@base.cometa</a>
-<div class="sponsor-logos" style="position:relative;z-index:1;">
-  <img src="res/logos/meteorito.webp" alt="Meteorito">
-  <img src="res/logos/elpatio.webp" alt="El Patio">
-  <img src="res/logos/lamarzocco.webp" alt="La Marzocco">
-  <img src="res/logos/cafefrio.webp" alt="Café Frío">
-  <img src="res/logos/oatly.png" alt="Oatly">
-</div>
-</footer>
+  <footer>
+    <div style="position:absolute;inset:-15%;z-index:0;display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:0.12;">
+      <svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 792" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;fill:white;">
+        <path fill-rule="evenodd" d="m523.43 456.46c0 0-61.87-12.82-64.27 8.03-2.39 20.79 31.6 62.29 31.6 62.29 0 0-47.67-25.32-60.76-13.33-12.18 11.15 10.89 45.65 10.89 45.65-31.2-22.45 2.84 43.53 4.03 45.72 12.36 22.74 33.42 47.49 33.42 47.49 0 0-60.89-64.53-79.45-63.5-38.42 2.13-11.75 75.46-11.75 75.46 0 0-15.01-63.42-40.94-58.08-27.33 5.64-26.12 66.84-26.12 66.84 0 0-3.97-55.76-26.82-36.45-12.07 10.2-30.93 61.7-30.93 61.7 0 0-4.59-94.19-29.6-55.42-11.69 18.13-58.99 74.14-58.99 74.14 0 0 23.31-91.41 23.05-111.32-0.1-7.88-0.35-38.21-10.36-41.97-14.46-5.44-106.35 48.51-106.35 48.51 0 0 76.1-49.82 87.32-96.99 9.66-40.65-83.09 5.59-83.09 5.59 0 0 78.33-45.5 72.06-68.69-7.41-27.36-97.6-24.42-97.6-24.42 0 0 88.19-28.07 84.37-46.97-4.28-21.22-128.14-35.71-128.14-35.71 0 0 49.88-12.69 73.44-18.04 18.51-4.21 50.97-10.28 62.25-26.34 14.87-21.18-42.93-56.19-42.93-56.19 0 0 54.55 26.41 61.92 11.82 6-11.88-9.22-36.79-14.54-46.42-10.1-18.29-36.35-50.8-36.35-50.8 0 0 50.29 37.34 64.01 29.76 17.67-9.76-9.96-62.89-9.96-62.89 0 0 22.88 26.85 36.57 36.75 14.83 10.73 24.91 19.13 36.2 1.2 17.45-27.72 19.72-88.88 19.72-88.88 0 0 6.88 33.05 14.77 49.14 7.42 15.14 26.14 46.71 49.29 42.2 20.47-3.99 37.36-34.1 48.7-47.93 10.7-13.05 28.78-41.11 28.78-41.11 0 0-35.96 62.4-13.04 85.67 16.78 17.03 84.6-36.9 84.6-36.9 0 0-82.68 62.76-41.9 84.68 35.34 19 112.02-17.77 112.02-17.77 0 0-101.64 49.63-84.89 102.58 11.36 35.92 116.87 24.88 116.87 24.88 0 0-69.88 11.11-86.26 30.82-23.49 28.26 44.79 26.28 44.79 26.28 0 0-101.88-2.14-77.26 25.94 12.25 13.98 83.46 16.16 83.46 16.16 0 0-49.43-1.41-73.99 2.37-1.73 0.27-13.11 1.12-14.47 3.08-5.31 7.66 6.49 11.41 12.9 14.35 14.4 6.61 53.73 17.02 53.73 17.02z"/>
+      </svg>
+    </div>
+    
+    <div class="footer-inner">
 
+      <div class="footer-main">
+
+        <!-- Logo + info -->
+        <div class="footer-left">
+          <img src="res/logo_bc.webp" alt="Base Cometa" class="footer-logo-img">
+          <div class="finfo">
+            <strong>Mayo 29, 30 y 31 de 2026</strong><br>
+            <a href="https://maps.app.goo.gl/uiHAgCitXuEqTTwZ7">Esquina La Gran Lucha</a><br>
+            49 por 52, Centro, Mérida, Yucatán
+          </div>
+        </div>
+
+        <!-- Meteorín + speech bubble -->
+        <div class="footer-right">
+          <img src="res/meteorin2.webp" alt="Meteorín" class="footer-meteorin">
+          <div class="footer-speech-wrap">
+            <img src="res/speech.svg" alt="">
+            <div class="footer-speech-text">
+              <p>Síguenos en insta</p>
+              <a href="https://www.instagram.com/base.cometa/">@base.cometa</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Logos sponsors -->
+      <div class="footer-sponsors">
+        <img src="res/logos/meteorito.webp" alt="Meteorito">
+        <img src="res/logos/elpatio.webp" alt="El Patio">
+        <img src="res/logos/lamarzocco.webp" alt="La Marzocco">
+        <img src="res/logos/cafefrio.webp" alt="Café Frío">
+        <img src="res/logos/oatly.png" alt="Oatly">
+      </div>
+
+    </div>
+  </footer>
 <script>
 // Accordion
 document.querySelectorAll('.atrig').forEach(btn => {
