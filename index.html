@@ -874,31 +874,26 @@ document.getElementById(tab.dataset.day).classList.add('active');
     const email = document.getElementById('c-email').value.trim();
     const tel = document.getElementById('c-tel').value.trim();
     const cafe = document.getElementById('c-cafe').value.trim() || "Independiente";
-    const torneo = Array.from(document.querySelectorAll('input[name="c-torneo"]:checked')).map(cb => cb.value).join(', ');
     const exp = document.getElementById('c-exp').value;
     const notas = document.getElementById('c-notas').value.trim();
     const acepto = document.getElementById('c-acepto').checked;
-    
-    // Validación idéntica a la tuya
-    if (!nombre || !email || !tel || !torneo || !acepto) {
+
+    if (!nombre || !email || !tel || !acepto) {
       alert('Por favor completa los campos obligatorios y acepta el reglamento.');
       return;
     }
-    
-    // Feedback visual en el botón de torneo
+
     const submitBtn = this.querySelector('button[type="submit"]');
     submitBtn.disabled = true;
     submitBtn.innerText = "Inscribiendo al torneo...";
-    
-    // Empaquetamos los datos correspondientes a baristas
+
     const payload = {
-      formType: "concursantes", // Esto le avisa al script que use la pestaña de competidores
+      formType: "concursantes",
       nombre: nombre,
       apellido: apellido,
       email: email,
       telefono: tel,
       cafe: cafe,
-      torneo: torneo,
       experiencia: exp,
       notes: notas
     };
